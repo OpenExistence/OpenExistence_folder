@@ -1,91 +1,140 @@
 <template>
   <div class="donate">
+    <!-- Header -->
     <section class="page-header">
+      <div class="header-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+      </div>
       <div class="container">
         <h1>Faire un don</h1>
-        <p class="subtitle">Soutenez le fondateur avec de la cryptomonnaie</p>
+        <p class="subtitle">Soutenez l'aventure OpenExistence</p>
       </div>
     </section>
 
-    <section class="content">
+    <!-- Donate Content -->
+    <section class="section">
       <div class="container">
         <div class="donate-grid">
+          <!-- Wallet Section -->
           <div class="wallet-section">
-            <h2>Adresse du portefeuille</h2>
-            <p class="warning">
-              ⚠️ Envoyez uniquement les cryptomonnaies支持的 ci-dessous. 
-              Les autres tokens pourraient être perdus.
-            </p>
-            
-            <div class="crypto-tabs">
-              <button 
-                v-for="crypto in cryptos" 
-                :key="crypto.id"
-                :class="['crypto-tab', { active: selectedCrypto === crypto.id }]"
-                @click="selectedCrypto = crypto.id"
-              >
-                {{ crypto.name }}
-              </button>
-            </div>
-
-            <div class="wallet-address">
-              <div class="address-display">
-                <code>{{ currentCrypto.address }}</code>
-                <button class="btn-copy" @click="copyAddress">
-                  {{ copied ? '✓ Copié!' : 'Copier' }}
-                </button>
-              </div>
-              <div class="qr-code">
-                <div class="qr-placeholder">
-                  QR Code - {{ currentCrypto.name }}
+            <div class="wallet-card card">
+              <div class="wallet-header">
+                <h2>Adresse du portefeuille</h2>
+                <div class="network-badge">
+                  <span class="network-dot"></span>
+                  Ethereum Mainnet
                 </div>
               </div>
-            </div>
+              
+              <div class="warning-box">
+                ⚠️ Envoyez uniquement les cryptomonnaies ci-dessous. Les autres tokens pourraient être perdus.
+              </div>
 
-            <div class="amount-section">
-              <h3>Montant suggéré</h3>
-              <div class="amount-buttons">
+              <!-- Crypto Tabs -->
+              <div class="crypto-tabs">
                 <button 
-                  v-for="amount in amounts" 
-                  :key="amount"
-                  class="amount-btn"
-                  @click="selectedAmount = amount"
-                  :class="{ active: selectedAmount === amount }"
+                  v-for="crypto in cryptos" 
+                  :key="crypto.id"
+                  :class="['crypto-tab', { active: selectedCrypto === crypto.id }]"
+                  @click="selectedCrypto = crypto.id"
                 >
-                  {{ amount }} {{ currentCrypto.symbol }}
+                  <span class="crypto-icon">{{ crypto.icon }}</span>
+                  <span class="crypto-name">{{ crypto.name }}</span>
                 </button>
+              </div>
+
+              <!-- Address Display -->
+              <div class="address-section">
+                <label>{{ currentCrypto.name }} Address</label>
+                <div class="address-box">
+                  <code>{{ currentCrypto.address }}</code>
+                  <button class="copy-btn" @click="copyAddress">
+                    <span v-if="copied">✓</span>
+                    <span v-else>📋</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- QR Code -->
+              <div class="qr-section">
+                <div class="qr-placeholder">
+                  <div class="qr-icon">⬡</div>
+                  <span>QR Code</span>
+                </div>
+              </div>
+
+              <!-- Amount Selection -->
+              <div class="amount-section">
+                <label>Montant suggéré</label>
+                <div class="amount-grid">
+                  <button 
+                    v-for="amount in amounts" 
+                    :key="amount"
+                    class="amount-btn"
+                    @click="selectedAmount = amount"
+                    :class="{ active: selectedAmount === amount }"
+                  >
+                    {{ amount }} {{ currentCrypto.symbol }}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
 
+          <!-- Info Section -->
           <div class="info-section">
-            <div class="info-card">
+            <!-- How to Donate -->
+            <div class="info-card card">
               <h3>Comment faire un don ?</h3>
-              <ol>
-                <li>Sélectionnez la cryptomonnaie</li>
-                <li>Copiez l'adresse ou scannez le QR code</li>
-                <li>Envoyez le montant de votre choix depuis votre portefeuille</li>
-                <li>C'est fait ! Merci pour votre soutien 🙌</li>
+              <ol class="steps-list">
+                <li>
+                  <span class="step-num">1</span>
+                  <span>Sélectionnez la cryptomonnaie</span>
+                </li>
+                <li>
+                  <span class="step-num">2</span>
+                  <span>Copiez l'adresse ou scannez le QR</span>
+                </li>
+                <li>
+                  <span class="step-num">3</span>
+                  <span>Envoyez le montant depuis votre portefeuille</span>
+                </li>
+                <li>
+                  <span class="step-num">4</span>
+                  <span>C'est fait ! Merci pour votre soutien 🙌</span>
+                </li>
               </ol>
             </div>
 
-            <div class="info-card">
-              <h3>Cryptomonnaies supportées</h3>
-              <ul class="crypto-list">
-                <li v-for="crypto in cryptos" :key="crypto.id">
+            <!-- Supported Cryptos -->
+            <div class="info-card card">
+              <h3>Cryptomonnaies acceptées</h3>
+              <div class="crypto-grid">
+                <div v-for="crypto in cryptos" :key="crypto.id" class="crypto-item">
                   <span class="crypto-icon">{{ crypto.icon }}</span>
-                  {{ crypto.name }} ({{ crypto.symbol }})
-                </li>
+                  <span>{{ crypto.name }}</span>
+                  <span class="crypto-symbol">{{ crypto.symbol }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="info-card card tips-card">
+              <h3>💡 Conseils</h3>
+              <ul class="tips-list">
+                <li>Vérifiez toujours l'adresse avant d'envoyer</li>
+                <li>Les petits dons sont les bienvenus !</li>
+                <li>Vous pouvez rester anonyme</li>
+                <li>Les dons ne sont pas remboursables</li>
               </ul>
             </div>
 
-            <div class="info-card">
-              <h3>Conseils</h3>
-              <ul>
-                <li>Vérifiez toujours l'adresse avant d'envoyer</li>
-                <li>Les petits dons sont les bienvenus !</li>
-                <li>Vous pouvez donner anonymously</li>
-              </ul>
+            <!-- Thank You -->
+            <div class="thank-you-card card">
+              <div class="thank-you-icon">✨</div>
+              <h3>Merci pour votre soutien !</h3>
+              <p>Chaque don, aussi petit soit-il, nous rapproche de la liberté.</p>
             </div>
           </div>
         </div>
@@ -102,10 +151,10 @@ const selectedAmount = ref(null)
 const copied = ref(false)
 
 const cryptos = [
-  { id: 'eth', name: 'Ethereum', symbol: 'ETH', address: '0x...', icon: '⟐' },
-  { id: 'btc', name: 'Bitcoin', symbol: 'BTC', address: 'bc1q...', icon: '₿' },
-  { id: 'usdt', name: 'Tether', symbol: 'USDT', address: '0x...', icon: '₮' },
-  { id: 'sol', name: 'Solana', symbol: 'SOL', address: '...', icon: '◎' }
+  { id: 'eth', name: 'Ethereum', symbol: 'ETH', address: '0x742d35Cc6634C0532925a3b844Bc9e7595f4Eb5', icon: '⟐' },
+  { id: 'btc', name: 'Bitcoin', symbol: 'BTC', address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', icon: '₿' },
+  { id: 'usdt', name: 'Tether', symbol: 'USDT', address: '0x742d35Cc6634C0532925a3b844Bc9e7595f4Eb5', icon: '₮' },
+  { id: 'sol', name: 'Solana', symbol: 'SOL', address: '7EcDhSYGxXyscszYEP2CqqHfjrGmPNq9U7Y7x7uJ', icon: '◎' }
 ]
 
 const amounts = [0.01, 0.05, 0.1, 0.5, 1, 5]
@@ -129,142 +178,260 @@ const copyAddress = async () => {
 
 <style scoped>
 .page-header {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  padding: 4rem 0;
+  padding: 6rem 0 4rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: -150px;
+  right: -100px;
+  opacity: 0.3;
+}
+
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--accent);
+  bottom: -100px;
+  left: -50px;
+  opacity: 0.3;
 }
 
 .page-header h1 {
-  font-size: 2.5rem;
-  color: var(--primary);
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  position: relative;
 }
 
 .subtitle {
+  font-size: 1.25rem;
   color: var(--text-gray);
-  margin-top: 0.5rem;
+  position: relative;
 }
 
-.content {
-  padding: 4rem 0;
+.section {
+  padding: 2rem 0 6rem;
 }
 
 .donate-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 2rem;
 }
 
-@media (max-width: 768px) {
-  .donate-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.wallet-section {
-  background: var(--bg-dark);
+/* Wallet Card */
+.wallet-card {
   padding: 2rem;
-  border-radius: 15px;
 }
 
-.warning {
-  background: #3d2814;
-  border: 1px solid #ff6b35;
-  color: #ffb347;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-}
-
-.crypto-tabs {
+.wallet-header {
   display: flex;
-  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1.5rem;
-  flex-wrap: wrap;
+}
+
+.wallet-header h2 {
+  font-size: 1.25rem;
+}
+
+.network-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 245, 212, 0.1);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+}
+
+.network-dot {
+  width: 8px;
+  height: 8px;
+  background: #00ff88;
+  border-radius: 50%;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.warning-box {
+  background: rgba(247, 37, 133, 0.1);
+  border: 1px solid rgba(247, 37, 133, 0.3);
+  color: #f72585;
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Crypto Tabs */
+.crypto-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .crypto-tab {
-  padding: 0.75rem 1.5rem;
-  background: var(--bg-darker);
-  color: var(--text-light);
-  border-radius: 8px;
-  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.crypto-tab:hover {
+  border-color: var(--primary);
 }
 
 .crypto-tab.active {
-  background: var(--primary);
-  color: var(--bg-dark);
+  background: rgba(0, 245, 212, 0.1);
+  border-color: var(--primary);
 }
 
-.wallet-address {
-  margin-bottom: 2rem;
+.crypto-tab .crypto-icon {
+  font-size: 1.5rem;
 }
 
-.address-display {
+.crypto-tab .crypto-name {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+}
+
+.crypto-tab.active .crypto-name {
+  color: var(--primary);
+}
+
+/* Address Section */
+.address-section {
+  margin-bottom: 1.5rem;
+}
+
+.address-section label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  margin-bottom: 0.5rem;
+}
+
+.address-box {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: var(--bg-darker);
+  gap: 0.75rem;
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: 12px;
   padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
 }
 
-.address-display code {
+.address-box code {
   flex: 1;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   word-break: break-all;
+  color: var(--primary);
 }
 
-.btn-copy {
-  padding: 0.5rem 1rem;
-  background: var(--primary);
-  color: var(--bg-dark);
-  border-radius: 5px;
-  font-weight: bold;
-  white-space: nowrap;
+.copy-btn {
+  background: rgba(0, 245, 212, 0.1);
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-.qr-code {
+.copy-btn:hover {
+  background: rgba(0, 245, 212, 0.2);
+}
+
+/* QR Section */
+.qr-section {
   display: flex;
   justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
 .qr-placeholder {
-  width: 200px;
-  height: 200px;
-  background: #fff;
+  width: 180px;
+  height: 180px;
+  background: white;
+  border-radius: 16px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #333;
-  border-radius: 10px;
-  font-size: 0.9rem;
-}
-
-.amount-section h3 {
-  margin-bottom: 1rem;
-}
-
-.amount-buttons {
-  display: flex;
   gap: 0.5rem;
-  flex-wrap: wrap;
+  color: #333;
+}
+
+.qr-icon {
+  font-size: 3rem;
+  color: #000;
+}
+
+.qr-placeholder span {
+  font-size: 0.85rem;
+}
+
+/* Amount Section */
+.amount-section label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  margin-bottom: 0.75rem;
+}
+
+.amount-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
 }
 
 .amount-btn {
-  padding: 0.75rem 1.25rem;
-  background: var(--bg-darker);
+  padding: 0.875rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   color: var(--text-light);
-  border-radius: 8px;
-  transition: all 0.3s;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.amount-btn:hover {
+  border-color: var(--primary);
 }
 
 .amount-btn.active {
   background: var(--primary);
   color: var(--bg-dark);
+  border-color: var(--primary);
 }
 
+/* Info Section */
 .info-section {
   display: flex;
   flex-direction: column;
@@ -272,38 +439,144 @@ const copyAddress = async () => {
 }
 
 .info-card {
-  background: var(--bg-dark);
   padding: 1.5rem;
-  border-radius: 15px;
 }
 
 .info-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
   color: var(--primary);
-  margin-bottom: 1rem;
 }
 
-.info-card ol, .info-card ul {
-  padding-left: 1.5rem;
+/* Steps List */
+.steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.info-card li {
-  margin-bottom: 0.5rem;
+.steps-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   color: var(--text-gray);
 }
 
-.crypto-list {
-  list-style: none !important;
-  padding: 0 !important;
-}
-
-.crypto-list li {
-  padding: 0.5rem 0;
+.step-num {
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 245, 212, 0.1);
+  color: var(--primary);
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
 }
 
-.crypto-icon {
-  font-size: 1.2rem;
+/* Crypto Grid */
+.crypto-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.crypto-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg-dark);
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.crypto-item .crypto-icon {
+  font-size: 1.25rem;
+}
+
+.crypto-symbol {
+  margin-left: auto;
+  color: var(--text-gray);
+  font-size: 0.8rem;
+}
+
+/* Tips */
+.tips-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tips-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+.tips-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
+/* Thank You */
+.thank-you-card {
+  background: var(--gradient-1);
+  text-align: center;
+  padding: 2rem;
+}
+
+.thank-you-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.thank-you-card h3 {
+  color: var(--bg-dark);
+  margin-bottom: 0.5rem;
+}
+
+.thank-you-card p {
+  color: var(--bg-dark);
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .donate-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .crypto-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .wallet-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .crypto-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .amount-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>
