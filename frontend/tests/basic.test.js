@@ -12,6 +12,7 @@ import About from '../src/views/About.vue'
 import Donate from '../src/views/Donate.vue'
 import Legal from '../src/views/Legal.vue'
 import Transparency from '../src/views/Transparency.vue'
+import FAQ from '../src/views/FAQ.vue'
 
 // Router pour les tests
 const router = createRouter({
@@ -21,7 +22,8 @@ const router = createRouter({
     { path: '/about', name: 'About', component: About },
     { path: '/donate', name: 'Donate', component: Donate },
     { path: '/legal', name: 'Legal', component: Legal },
-    { path: '/transparency', name: 'Transparency', component: Transparency }
+    { path: '/transparency', name: 'Transparency', component: Transparency },
+    { path: '/faq', name: 'FAQ', component: FAQ }
   ]
 })
 
@@ -145,6 +147,24 @@ describe('OpenExistence - Tests de base', () => {
     })
   })
   
+  describe('Page FAQ (FAQ.vue)', () => {
+    it('doit exister et avoir du contenu', () => {
+      const wrapper = mount(FAQ)
+      expect(wrapper.html().length).toBeGreaterThan(500)
+    })
+    
+    it('doit avoir des categories de questions', () => {
+      const wrapper = mount(FAQ)
+      expect(wrapper.html()).toContain('Général')
+      expect(wrapper.html()).toContain('Crypto')
+    })
+    
+    it('doit avoir des questions frequentes', () => {
+      const wrapper = mount(FAQ)
+      expect(wrapper.html()).toContain('question')
+    })
+  })
+  
   describe('Router', () => {
     it('doit avoir toutes les routes configurées', () => {
       const routes = router.getRoutes()
@@ -155,6 +175,7 @@ describe('OpenExistence - Tests de base', () => {
       expect(pathes).toContain('/donate')
       expect(pathes).toContain('/legal')
       expect(pathes).toContain('/transparency')
+      expect(pathes).toContain('/faq')
     })
   })
   

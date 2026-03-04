@@ -4,6 +4,7 @@ import About from '../views/About.vue'
 import Donate from '../views/Donate.vue'
 import Legal from '../views/Legal.vue'
 import Transparency from '../views/Transparency.vue'
+import FAQ from '../views/FAQ.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/transparency',
     name: 'Transparency',
     component: Transparency
+  },
+  {
+    path: '/faq',
+    name: 'FAQ',
+    component: FAQ
   }
 ]
 
