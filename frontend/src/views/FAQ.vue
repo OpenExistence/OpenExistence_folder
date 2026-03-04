@@ -40,18 +40,12 @@
     </div>
 
     <div class="faq-cta glass-card">
-      <h3>Vous avez une autre question ?</h3>
-      <p>N'hésitez pas à nous contacter sur les réseaux sociaux ou par email.</p>
+      <h3>Une question ?</h3>
+      <p>Consultez les catégories ci-dessus ou explorez les autres pages du site.</p>
       <div class="cta-links">
-        <a href="https://twitter.com" target="_blank" rel="noopener" class="btn btn-secondary">
-          Twitter
-        </a>
-        <a href="https://discord.com" target="_blank" rel="noopener" class="btn btn-secondary">
-          Discord
-        </a>
-        <a href="mailto:contact@openexistence.io" class="btn btn-primary">
-          Email
-        </a>
+        <router-link to="/transparency" class="btn btn-primary">
+          Voir la transparence
+        </router-link>
       </div>
     </div>
   </div>
@@ -135,7 +129,7 @@ const faqs = [
   {
     category: 'don',
     question: 'Comment puis-je obtenir un reçu de don ?',
-    answer: 'Contactez-nous par email à <strong>contact@openexistence.io</strong> avec votre adresse wallet et nous vous fournirons un reçu.'
+    answer: 'Les reçus ne sont pas fournis. Toutes les transactions sont visibles sur la blockchain.'
   },
   {
     category: 'don',

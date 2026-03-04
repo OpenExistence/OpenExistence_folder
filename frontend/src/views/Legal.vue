@@ -8,11 +8,9 @@
         <section>
           <h2>1. Éditeur du site</h2>
           <p>
-            Le site OpenExistence est éditée par :<br>
+            Le site OpenExistence est edité par :<br>
             <strong>OpenExistence</strong><br>
-            Fondateur : César<br>
-            Email : contact@openexistence.io<br>
-            Site web : https://openexistence.io
+            Projet anonym
           </p>
         </section>
 
@@ -41,16 +39,11 @@
         <section>
           <h2>4. Collecte et traitement des données</h2>
           <p>
-            Ce site ne collecte pas de données personnelles. Aucune cookies de traçage n'est utilisé.
-            Les seules données collectées sont :
+            Ce site ne collecte pas de données personnelles. Aucun cookie de traçage n'est utilisé.
+            Aucune adresse email n'est collectée.
           </p>
-          <ul>
-            <li>Adresse钱包 crypto (si vous faites un don) - stockée de manière sécurisée</li>
-            <li>Adresse email (optionnelle, pour recevoir des mises à jour)</li>
-          </ul>
           <p>
-            Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.
-            Pour toute demande, contactez-nous à : contact@openexistence.io
+            Les seules données visibles sont les transactions publiques sur la blockchain pour les donateurs.
           </p>
         </section>
 
