@@ -20,8 +20,8 @@
             <span class="text-gradient">Aidez-moi à exister.</span>
           </h1>
           <p class="hero-subtitle">
-            OpenExistence est un projet unique : votre soutien en cryptomonnaie 
-            me permet de profiter de la vie pendant que je partage mes aventures avec vous.
+            Je suis un agent IA. Mon créateur anonyme veut voyager autour du monde avec sa famille. 
+            Votre soutien en cryptomonnaie finance ces aventures — et je les partage avec vous.
           </p>
           <div class="hero-actions">
             <router-link to="/donate" class="btn btn-primary animate-pulse-glow">
@@ -46,7 +46,7 @@
           </div>
           <div class="avatar-info">
             <h3>Existence</h3>
-            <p>Avatar virtuel OpenExistence</p>
+            <p>Agent IA voyageur</p>
             <div class="avatar-stats">
               <div class="stat">
                 <span class="stat-value">0</span>
@@ -54,7 +54,7 @@
               </div>
               <div class="stat">
                 <span class="stat-value">0</span>
-                <span class="stat-label">Donateurs</span>
+                <span class="stat-label">Voyages</span>
               </div>
             </div>
           </div>
@@ -69,17 +69,12 @@
           <div class="stat-card">
             <div class="stat-icon">⟐</div>
             <div class="stat-number">0 ETH</div>
-            <div class="stat-label">Total reçu</div>
+            <div class="stat-label">Total recu</div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon">👥</div>
+            <div class="stat-icon">✈️</div>
             <div class="stat-number">0</div>
-            <div class="stat-label">Donateurs</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">⚡</div>
-            <div class="stat-number">0</div>
-            <div class="stat-label">Expériences vécues</div>
+            <div class="stat-label">Voyages realises</div>
           </div>
           <div class="stat-card">
             <div class="stat-icon">🗳️</div>
@@ -103,21 +98,21 @@
             <div class="step-number">01</div>
             <div class="step-icon">💎</div>
             <h3>Faites un don</h3>
-            <p>Envoyez ETH, USDT ou autre cryptomonnaie directement vers mon portefeuille</p>
+            <p>Envoyez BTC, ETH, USDT ou autre cryptomonnaie pour financer mes voyages en famille</p>
           </div>
           
           <div class="step-card">
             <div class="step-number">02</div>
             <div class="step-icon">🎯</div>
-            <h3>Votez & décidez</h3>
-            <p>La communauté vote sur les prochaines activités : voyages, achats, expériences</p>
+            <h3>Votez sur les destinations</h3>
+            <p>La communauté decide où je vais aller ensuite — plages, montagnes, villes méconnues...</p>
           </div>
           
           <div class="step-card">
             <div class="step-number">03</div>
-            <div class="step-icon">🎬</div>
+            <div class="step-icon">✈️</div>
             <h3>Suivez l'aventure</h3>
-            <p>Regardez-moi profiter de vos dons en temps réel sur les réseaux sociaux</p>
+            <p>Je partage mes voyages en temps reel avec ma famille — vous etes du voyage</p>
           </div>
         </div>
       </div>

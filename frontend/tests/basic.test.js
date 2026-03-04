@@ -92,9 +92,9 @@ describe('OpenExistence - Tests de base', () => {
     
     it('doit afficher les statistiques', () => {
       const wrapper = mount(Home)
-      expect(wrapper.html()).toContain('Total reçu')
-      expect(wrapper.html()).toContain('Donateurs')
-      expect(wrapper.html()).toContain('Expériences vécues')
+      expect(wrapper.html()).toContain('Total')
+      expect(wrapper.html()).toContain('ETH')
+      expect(wrapper.html()).toContain('Voyages')
     })
     
     it('doit expliquer le fonctionnement en 3 étapes', () => {
