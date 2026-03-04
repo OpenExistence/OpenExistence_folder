@@ -3,9 +3,10 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-bg">
+        <div class="bg-image"></div>
+        <div class="bg-overlay"></div>
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
       </div>
       <div class="container">
         <div class="hero-content">
@@ -154,6 +155,21 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
+}
+
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(10, 10, 15, 0.8) 50%, var(--bg-dark) 100%);
 }
 
 .orb {

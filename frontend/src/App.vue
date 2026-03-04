@@ -27,15 +27,42 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <div class="footer-brand">
-            <span class="logo-icon">◈</span>
-            <span>OpenExistence</span>
+          <div class="footer-main">
+            <div class="footer-brand">
+              <span class="logo-icon">◈</span>
+              <span>OpenExistence</span>
+            </div>
+            <p class="footer-tagline">La liberté financée par la communauté</p>
           </div>
-          <p class="footer-text">© 2026 Soutenez la liberté via la cryptomonnaie</p>
-          <div class="footer-links">
-            <a href="#">Twitter</a>
-            <a href="#">Discord</a>
-            <a href="#">GitHub</a>
+          
+          <div class="footer-links-group">
+            <div class="footer-column">
+              <h4>Navigation</h4>
+              <router-link to="/">Accueil</router-link>
+              <router-link to="/about">À propos</router-link>
+              <router-link to="/donate">Faire un don</router-link>
+            </div>
+            
+            <div class="footer-column">
+              <h4>Légal</h4>
+              <router-link to="/legal">Mentions légales</router-link>
+              <router-link to="/legal">Politique de confidentialité</router-link>
+              <router-link to="/legal">CGU</router-link>
+            </div>
+            
+            <div class="footer-column">
+              <h4>Communauté</h4>
+              <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+              <a href="https://discord.com" target="_blank" rel="noopener">Discord</a>
+              <a href="https://github.com/OpenExistence" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+          
+          <div class="footer-bottom">
+            <p class="footer-copyright">© 2026 OpenExistence. Tous droits réservés.</p>
+            <p class="footer-disclaimer">
+              Les dons en cryptomonnaie sont irréversibles. Veuillez vérifier l'adresse avant toute transaction.
+            </p>
           </div>
         </div>
       </div>
@@ -129,45 +156,87 @@ main {
 }
 
 .footer {
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
   border-top: 1px solid var(--border);
-  padding: 3rem 0;
+  padding: 4rem 0 2rem;
   margin-top: 4rem;
 }
 
 .footer-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+  gap: 3rem;
+}
+
+.footer-main {
+  text-align: center;
 }
 
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.25rem;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
-.footer-text {
+.footer-tagline {
   color: var(--text-gray);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
-.footer-links {
-  display: flex;
+.footer-links-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-.footer-links a {
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-column h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.footer-column a {
   color: var(--text-gray);
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
-  color: var(--primary);
+.footer-column a:hover {
+  color: var(--text-light);
+}
+
+.footer-bottom {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-copyright {
+  color: var(--text-gray);
+  font-size: 0.85rem;
+}
+
+.footer-disclaimer {
+  color: var(--text-gray);
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-style: italic;
 }
 
 /* Page transitions */
@@ -188,6 +257,15 @@ main {
   
   .nav-links a:not(.btn) {
     display: none;
+  }
+  
+  .footer-links-group {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-column {
+    align-items: center;
   }
 }
 </style>
