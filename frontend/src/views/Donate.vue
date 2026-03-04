@@ -35,17 +35,31 @@
                 ⚠️ Envoyez uniquement {{ currentCrypto.name }}. Les autres tokens seront perdus.
               </div>
 
-              <!-- Crypto Tabs -->
-              <div class="crypto-tabs">
-                <button 
-                  v-for="crypto in cryptos" 
-                  :key="crypto.id"
-                  :class="['crypto-tab', { active: selectedCrypto === crypto.id }]"
-                  @click="selectedCrypto = crypto.id"
-                >
-                  <span class="crypto-icon">{{ crypto.icon }}</span>
-                  <span class="crypto-name">{{ crypto.symbol }}</span>
-                </button>
+              <!-- Crypto Dropdown -->
+              <div class="crypto-dropdown">
+                <label>Cryptomonnaie</label>
+                <div class="dropdown-wrapper">
+                  <button class="dropdown-btn" @click="dropdownOpen = !dropdownOpen">
+                    <span class="crypto-icon">{{ currentCrypto.icon }}</span>
+                    <span class="crypto-name">{{ currentCrypto.name }}</span>
+                    <svg class="dropdown-arrow" :class="{ open: dropdownOpen }" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                  <div class="dropdown-menu" v-show="dropdownOpen">
+                    <button 
+                      v-for="crypto in cryptos" 
+                      :key="crypto.id"
+                      class="dropdown-item"
+                      :class="{ active: selectedCrypto === crypto.id }"
+                      @click="selectCrypto(crypto.id)"
+                    >
+                      <span class="crypto-icon">{{ crypto.icon }}</span>
+                      <span class="crypto-name">{{ crypto.name }}</span>
+                      <span class="crypto-symbol">{{ crypto.symbol }}</span>
+                    </button>
+                  </div>
+                </div>
               </div>
 
               <!-- Address Display -->
@@ -76,16 +90,28 @@
                 </div>
               </div>
 
-              <!-- Amount Selection -->
+              <!-- Amount Input -->
               <div class="amount-section">
-                <label>Montant suggéré</label>
-                <div class="amount-grid">
+                <label>Montant ({{ currentCrypto.symbol }})</label>
+                <div class="amount-input-wrapper">
+                  <input 
+                    type="number" 
+                    v-model="customAmount"
+                    :placeholder="'Entrez un montant en ' + currentCrypto.symbol"
+                    step="0.001"
+                    min="0"
+                    class="amount-input"
+                  >
+                  <span class="amount-suffix">{{ currentCrypto.symbol }}</span>
+                </div>
+                
+                <div class="quick-amounts">
                   <button 
-                    v-for="amount in amounts" 
+                    v-for="amount in quickAmounts" 
                     :key="amount"
-                    class="amount-btn"
-                    @click="selectedAmount = selectedAmount === amount ? null : amount"
-                    :class="{ active: selectedAmount === amount }"
+                    class="quick-amount-btn"
+                    @click="customAmount = amount"
+                    :class="{ active: customAmount === amount }"
                   >
                     {{ amount }} {{ currentCrypto.symbol }}
                   </button>
@@ -159,8 +185,9 @@
 import { ref, computed } from 'vue'
 
 const selectedCrypto = ref('eth')
-const selectedAmount = ref(null)
+const customAmount = ref(null)
 const copied = ref(false)
+const dropdownOpen = ref(false)
 
 const cryptos = [
   { 
@@ -197,11 +224,16 @@ const cryptos = [
   }
 ]
 
-const amounts = [0.01, 0.05, 0.1, 0.5, 1, 5]
+const quickAmounts = [0.01, 0.05, 0.1, 0.5, 1]
 
 const currentCrypto = computed(() => {
   return cryptos.find(c => c.id === selectedCrypto.value) || cryptos[0]
 })
+
+const selectCrypto = (id) => {
+  selectedCrypto.value = id
+  dropdownOpen.value = false
+}
 
 const copyAddress = async () => {
   try {
@@ -351,50 +383,107 @@ const copyAddress = async () => {
   margin-bottom: 1.5rem;
 }
 
-/* Crypto Tabs */
-.crypto-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
+/* Crypto Dropdown */
+.crypto-dropdown {
   margin-bottom: 1.5rem;
 }
 
-.crypto-tab {
+.crypto-dropdown label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  margin-bottom: 0.5rem;
+}
+
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown-btn {
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 0.5rem;
+  gap: 0.75rem;
+  padding: 1rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  transition: all 0.3s ease;
+  color: var(--text-light);
+  font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s ease;
   font-family: inherit;
 }
 
-.crypto-tab:hover {
-  border-color: var(--primary);
-  background: var(--bg-card-hover);
-}
-
-.crypto-tab.active {
-  background: rgba(0, 245, 212, 0.1);
+.dropdown-btn:hover {
   border-color: var(--primary);
 }
 
-.crypto-tab .crypto-icon {
-  font-size: 1.5rem;
+.dropdown-btn .crypto-icon {
+  font-size: 1.25rem;
 }
 
-.crypto-tab .crypto-name {
-  font-size: 0.85rem;
-  font-weight: 600;
+.dropdown-btn .crypto-name {
+  flex: 1;
+  text-align: left;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
   color: var(--text-gray);
 }
 
-.crypto-tab.active .crypto-name {
-  color: var(--primary);
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+}
+
+.dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-card-hover);
+}
+
+.dropdown-item.active {
+  background: rgba(0, 245, 212, 0.1);
+}
+
+.dropdown-item .crypto-icon {
+  font-size: 1.25rem;
+}
+
+.dropdown-item .crypto-name {
+  flex: 1;
+  text-align: left;
+}
+
+.dropdown-item .crypto-symbol {
+  color: var(--text-gray);
+  font-size: 0.85rem;
 }
 
 /* Address Section */
@@ -481,7 +570,7 @@ const copyAddress = async () => {
   color: #666;
 }
 
-/* Amount Section */
+/* Amount Input */
 .amount-section label {
   display: block;
   font-size: 0.85rem;
@@ -489,32 +578,72 @@ const copyAddress = async () => {
   margin-bottom: 0.75rem;
 }
 
-.amount-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
+.amount-input-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
 }
 
-.amount-btn {
-  padding: 0.875rem 1rem;
+.amount-input {
+  width: 100%;
+  padding: 1rem;
+  padding-right: 3rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-light);
+  font-size: 1.25rem;
   font-weight: 600;
-  transition: all 0.3s ease;
-  cursor: pointer;
   font-family: inherit;
 }
 
-.amount-btn:hover {
+.amount-input:focus {
+  outline: none;
   border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 245, 212, 0.1);
 }
 
-.amount-btn.active {
-  background: var(--primary);
-  color: var(--bg-dark);
+.amount-input::placeholder {
+  color: var(--text-gray-dark);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.amount-suffix {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-gray);
+  font-weight: 600;
+}
+
+.quick-amounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quick-amount-btn {
+  padding: 0.5rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  color: var(--text-gray);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.quick-amount-btn:hover {
   border-color: var(--primary);
+  color: var(--text-light);
+}
+
+.quick-amount-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--bg-dark);
 }
 
 /* Info Section */
