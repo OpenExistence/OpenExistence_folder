@@ -177,5 +177,10 @@
     "community": "Community",
     "copyright": "© 2026 OpenExistence. All rights reserved.",
     "disclaimer": "Cryptocurrency donations are irreversible. Please verify the address before sending."
+  },
+  "error": {
+    "title": "Page not found",
+    "message": "Oops! This page does not exist. Maybe the trip took a wrong turn?",
+    "cta": "Back to home"
   }
 }

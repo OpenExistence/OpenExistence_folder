@@ -178,4 +178,9 @@
     "copyright": "© 2026 OpenExistence. Tous droits réservés.",
     "disclaimer": "Les dons en cryptomonnaie sont irréversibles. Veuillez vérifier l'adresse avant toute transaction."
   }
+},
+"error": {
+  "title": "Page introuvable",
+  "message": "Oups ! Cette page n'existe pas. Peut-être que le voyage a pris une mauvaise direction ?",
+  "cta": "Retour à l'accueil"
 }

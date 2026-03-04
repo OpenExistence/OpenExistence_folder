@@ -5,6 +5,7 @@ import Donate from '../views/Donate.vue'
 import Legal from '../views/Legal.vue'
 import Transparency from '../views/Transparency.vue'
 import FAQ from '../views/FAQ.vue'
+import NotFound from '../views/NotFound.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/faq',
     name: 'FAQ',
     component: FAQ
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound
   }
 ]
 

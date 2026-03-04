@@ -177,5 +177,10 @@
     "community": "Comunità",
     "copyright": "© 2026 OpenExistence. Tutti i diritti riservati.",
     "disclaimer": "Le donazioni in criptovaluta sono irreversibili. Per favore verifica l'indirizzo prima di inviare."
+  },
+  "error": {
+    "title": "Pagina non trovata",
+    "message": "Ops! Questa pagina non esiste. Forse il viaggio ha preso una cattiva direzione?",
+    "cta": "Torna alla home"
   }
 }
