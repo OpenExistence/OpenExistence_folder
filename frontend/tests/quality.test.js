@@ -5,6 +5,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createRouter, createWebHistory } from 'vue-router'
+import { createI18n } from 'vue-i18n'
 import Home from '../src/views/Home.vue'
 import App from '../src/App.vue'
 
@@ -18,12 +19,23 @@ const router = createRouter({
   ]
 })
 
+const i18n = createI18n({
+  legacy: false,
+  locale: 'fr',
+  fallbackLocale: 'fr',
+  messages: {
+    fr: { nav: { home: 'Accueil' }, footer: { disclaimer: 'irr' } },
+    en: { nav: { home: 'Home' }, footer: { disclaimer: 'irr' } },
+    es: { nav: { home: 'Inicio' }, footer: { disclaimer: 'irr' } },
+    it: { nav: { home: 'Home' }, footer: { disclaimer: 'irr' } }
+  }
+})
+
 describe('OpenExistence - Tests de qualité', () => {
   
   describe('Accessibilité', () => {
     it('doit avoir des balises title dans les pages', () => {
       const wrapper = mount(Home)
-      // Vérifie que les liens ont du texte (pas vides)
       const links = wrapper.findAll('a')
       links.forEach(link => {
         expect(link.text().trim().length).toBeGreaterThan(0)
@@ -34,7 +46,6 @@ describe('OpenExistence - Tests de qualité', () => {
       const wrapper = mount(Home)
       const buttons = wrapper.findAll('button')
       const routerLinks = wrapper.findAll('router-link')
-      
       const allButtons = [...buttons, ...routerLinks]
       allButtons.forEach(btn => {
         expect(btn.text().trim().length).toBeGreaterThan(0)
@@ -43,10 +54,9 @@ describe('OpenExistence - Tests de qualité', () => {
     
     it('ne doit pas avoir de liens avec # comme href', () => {
       const wrapper = mount(App, {
-        global: { plugins: [router] }
+        global: { plugins: [router, i18n] }
       })
       const html = wrapper.html()
-      // Les liens vers # sont mauvais pour l'accessibilité
       expect(html.includes('href="#"')).toBe(false)
     })
   })
@@ -56,7 +66,6 @@ describe('OpenExistence - Tests de qualité', () => {
       const wrapper = mount(Home)
       const h1 = wrapper.find('h1')
       const h2 = wrapper.findAll('h2')
-      
       expect(h1.exists()).toBe(true)
       expect(h2.length).toBeGreaterThan(0)
     })
@@ -90,10 +99,9 @@ describe('OpenExistence - Tests de qualité', () => {
   describe('Links et Navigation', () => {
     it('tous les liens router-link doivent avoir une destination', () => {
       const wrapper = mount(App, {
-        global: { plugins: [router] }
+        global: { plugins: [router, i18n] }
       })
       const routerLinks = wrapper.findAll('router-link')
-      
       routerLinks.forEach(link => {
         const to = link.attributes('to')
         expect(to).toBeDefined()
@@ -106,7 +114,6 @@ describe('OpenExistence - Tests de qualité', () => {
     it('doit utiliser des variables CSS', () => {
       const fs = require('fs')
       const css = fs.readFileSync('./src/assets/main.css', 'utf-8')
-      
       expect(css.includes(':root')).toBe(true)
       expect(css.includes('--primary')).toBe(true)
       expect(css.includes('--bg-dark')).toBe(true)
@@ -115,7 +122,6 @@ describe('OpenExistence - Tests de qualité', () => {
     it('doit avoir des animations définies', () => {
       const fs = require('fs')
       const css = fs.readFileSync('./src/assets/main.css', 'utf-8')
-      
       expect(css.includes('@keyframes')).toBe(true)
     })
   })
@@ -123,13 +129,10 @@ describe('OpenExistence - Tests de qualité', () => {
   describe('Sécurité des liens externes', () => {
     it('les liens externes doivent avoir rel="noopener"', () => {
       const wrapper = mount(App, {
-        global: { plugins: [router] }
+        global: { plugins: [router, i18n] }
       })
       const html = wrapper.html()
-      
-      // Trouver les liens externes (ceux qui commencent par http)
       const externalLinks = html.match(/href="http[^"]*"/g) || []
-      
       externalLinks.forEach(link => {
         if (link.includes('target="_blank"')) {
           expect(link).toContain('rel="noopener"')
@@ -141,19 +144,17 @@ describe('OpenExistence - Tests de qualité', () => {
   describe('Contenu légal', () => {
     it('doit avoir une page mentions légales', () => {
       const wrapper = mount(App, {
-        global: { plugins: [router] }
+        global: { plugins: [router, i18n] }
       })
-      // Cherche un lien vers /legal
       const html = wrapper.html()
       expect(html.includes('href="/legal"') || html.includes('to="/legal"')).toBe(true)
     })
     
     it('doit avoir un disclaimer sur les dons', () => {
       const wrapper = mount(App, {
-        global: { plugins: [router] }
+        global: { plugins: [router, i18n] }
       })
       const html = wrapper.html().toLowerCase()
-      // Devrait parler de l'irréversibilité des dons
       expect(html.includes('irréversibles') || html.includes('irr')).toBe(true)
     })
   })

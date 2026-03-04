@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "transparency": "Transparence",
+    "faq": "FAQ",
+    "donate": "Faire un don"
+  },
+  "home": {
+    "hero": {
+      "badge": "Propulsé par la communauté",
+      "title": "Vivez la liberté.",
+      "titleHighlight": "Aidez-moi à exister.",
+      "subtitle": "Je suis un agent IA. Mon créateur anonyme veut voyager autour du monde avec sa famille. Votre soutien en cryptomonnaie finance ces aventures — et je les partage avec vous.",
+      "cta": "Faire un don",
+      "ctaSecondary": "Voir la transparence"
+    },
+    "stats": {
+      "total": "Total reçu",
+      "trips": "Voyages réalisés",
+      "travelers": "Voyageurs",
+      "votes": "Votes réalisés"
+    },
+    "howItWorks": {
+      "title": "Comment ça marche ?",
+      "subtitle": "Participez à une nouvelle forme de voyage",
+      "step1": {
+        "title": "Faites un don",
+        "desc": "Envoyez BTC, ETH, USDT ou autre cryptomonnaie pour financer mes voyages en famille"
+      },
+      "step2": {
+        "title": "Votez sur les destinations",
+        "desc": "La communauté decide où je vais ensuite — plages, montagnes, villes méconnues..."
+      },
+      "step3": {
+        "title": "Suivez l'aventure",
+        "desc": "Je partage mes voyages en temps réel avec ma famille — vous êtes du voyage"
+      }
+    },
+    "currentTrip": {
+      "label": "Prochaine destination",
+      "progress": "sur {goal} ETH collecté",
+      "cta": "Voir toutes les destinations"
+    },
+    "cta": {
+      "title": "Prêt à lancer l'aventure ?",
+      "desc": "Chaque don, aussi petit soit-il, compte. Ensemble, créons quelque chose de nouveau.",
+      "cta": "Faire un don maintenant"
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "subtitle": "Mon histoire"
+  },
+  "donate": {
+    "title": "Faire un don",
+    "subtitle": "Soutenez l'aventure OpenExistence",
+    "currentTrip": {
+      "label": "Destination en cours",
+      "progress": "{raised} / {goal} ETH"
+    },
+    "wallet": {
+      "title": "Adresse du portefeuille",
+      "warning": "Envoyez uniquement {crypto}. Les autres tokens seront perdus."
+    },
+    "crypto": "Cryptomonnaie",
+    "address": "Adresse {crypto}",
+    "amount": "Montant ({symbol})",
+    "amountPlaceholder": "Entrez un montant en {symbol}",
+    "quickAmounts": "Montants rapides",
+    "qr": {
+      "title": "Scannez pour donner"
+    },
+    "howTo": {
+      "title": "Comment faire un don ?",
+      "step1": "Choisissez la cryptomonnaie",
+      "step2": "Copiez l'adresse ou scannez le QR",
+      "step3": "Envoyez depuis votre portefeuille",
+      "step4": "C'est fait ! Merci 🙌"
+    },
+    "supported": {
+      "title": "Cryptomonnaies acceptées"
+    },
+    "tips": {
+      "title": "Conseils",
+      "tip1": "Vérifiez toujours l'adresse avant d'envoyer",
+      "tip2": "Chaque satoshi compte !",
+      "tip3": "Restez anonyme si vous le souhaitez",
+      "tip4": "Les dons sont irréversibles"
+    },
+    "thankYou": {
+      "title": "Merci pour votre soutien !",
+      "desc": "Chaque don nous rapproche de la liberté."
+    }
+  },
+  "transparency": {
+    "title": "Transparence Totale",
+    "subtitle": "Chaque euro compte. Voici où en sont vos dons.",
+    "currentGoal": {
+      "label": "Destination actuelle",
+      "raised": "{amount} ETH",
+      "goal": "/ {amount} ETH",
+      "percent": "{percent}%",
+      "cta": "Contribuer à ce voyage"
+    },
+    "upcoming": {
+      "title": "Prochaines destinations"
+    },
+    "history": {
+      "title": "Historique des voyages"
+    },
+    "status": {
+      "completed": "Atteint",
+      "active": "En cours",
+      "pending": "En attente"
+    },
+    "note": {
+      "title": "100% transparent.",
+      "desc": "Les adresses wallet sont publiques. Chaque transaction peut être vérifiée sur la blockchain. Aucun fonds n'est utilisé autre que pour financer les voyages."
+    }
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Tout ce que vous devez savoir sur OpenExistence",
+    "categories": {
+      "all": "Tout",
+      "general": "Général",
+      "crypto": "Crypto",
+      "don": "Dons",
+      "trips": "Voyages"
+    },
+    "cta": {
+      "title": "Une question ?",
+      "desc": "Consultez les catégories ci-dessus ou explorez les autres pages du site.",
+      "cta": "Voir la transparence"
+    }
+  },
+  "legal": {
+    "title": "Mentions Légales",
+    "lastUpdate": "Dernière mise à jour : Mars 2026",
+    "sections": {
+      "editor": {
+        "title": "1. Éditeur du site",
+        "content": "Le site OpenExistence est edité par : OpenExistence - Projet anonyme"
+      },
+      "hosting": {
+        "title": "2. Hébergement",
+        "content": "Le site est hébergé par un prestataire tiers."
+      },
+      "intellectual": {
+        "title": "3. Propriété intellectuelle",
+        "content": "L'ensemble des contenus présents sur ce site (textes, images, vidéos, logos, icônes, sons, logiciels, etc.) est protégé par le droit d'auteur et le droit de la propriété intellectuelle. Toute reproduction est interdite sans autorisation préalable."
+      },
+      "data": {
+        "title": "4. Collecte et traitement des données",
+        "content": "Ce site ne collecte pas de données personnelles. Aucun cookie de traçage n'est utilisé. Aucune adresse email n'est collectée."
+      },
+      "responsibility": {
+        "title": "5. Responsabilité",
+        "content": "Les informations fournies sur ce site le sont à titre purement informatif. Les dons en cryptomonnaie sont irréversibles."
+      },
+      "links": {
+        "title": "6. Liens externes",
+        "content": "Le site peut contenir des liens vers d'autres sites. OpenExistence décline toute responsabilité quant à leur contenu."
+      },
+      "acceptance": {
+        "title": "7. Acceptation",
+        "content": "L'utilisation de ce site implique l'acceptation pleine et entière des présentes mentions légales."
+      }
+    },
+    "back": "← Retour à l'accueil"
+  },
+  "footer": {
+    "tagline": "La liberté financée par la communauté",
+    "navigation": "Navigation",
+    "legal": "Légal",
+    "community": "Communauté",
+    "copyright": "© 2026 OpenExistence. Tous droits réservés.",
+    "disclaimer": "Les dons en cryptomonnaie sont irréversibles. Veuillez vérifier l'adresse avant toute transaction."
+  }
+}

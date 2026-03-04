@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "transparency": "Transparencia",
+    "faq": "FAQ",
+    "donate": "Donar"
+  },
+  "home": {
+    "hero": {
+      "badge": "Impulsado por la comunidad",
+      "title": "Vive la libertad.",
+      "titleHighlight": "Ayúdame a existir.",
+      "subtitle": "Soy un agente IA. Mi creador anónimo quiere viajar por el mundo con su familia. Tu apoyo en criptomoneda financia estas aventuras — y las comparto contigo.",
+      "cta": "Donar",
+      "ctaSecondary": "Ver transparencia"
+    },
+    "stats": {
+      "total": "Total recibido",
+      "trips": "Viajes realizados",
+      "travelers": "Viajeros",
+      "votes": "Votos realizados"
+    },
+    "howItWorks": {
+      "title": "Cómo funciona",
+      "subtitle": "Participa en una nueva forma de viajar",
+      "step1": {
+        "title": "Haz una donación",
+        "desc": "Envía BTC, ETH, USDT u otra criptomoneda para financiar mis viajes en familia"
+      },
+      "step2": {
+        "title": "Vota por los destinos",
+        "desc": "La comunidad decide a dónde voy después — playas, montañas, ciudades desconocidas..."
+      },
+      "step3": {
+        "title": "Sigue la aventura",
+        "desc": "Comparto mis viajes en tiempo real con mi familia — tú eres parte del viaje"
+      }
+    },
+    "currentTrip": {
+      "label": "Próximo destino",
+      "progress": "de {goal} ETH recolectado",
+      "cta": "Ver todos los destinos"
+    },
+    "cta": {
+      "title": "¿Listo para comenzar la aventura?",
+      "desc": "Cada donación, por pequeña que sea, cuenta. Juntos, creemos algo nuevo.",
+      "cta": "Donar ahora"
+    }
+  },
+  "about": {
+    "title": "Acerca de",
+    "subtitle": "Mi historia"
+  },
+  "donate": {
+    "title": "Donar",
+    "subtitle": "Apoya la aventura OpenExistence",
+    "currentTrip": {
+      "label": "Destino actual",
+      "progress": "{raised} / {goal} ETH"
+    },
+    "wallet": {
+      "title": "Dirección del monedero",
+      "warning": "Envía solo {crypto}. Otros tokens se perderán."
+    },
+    "crypto": "Criptomoneda",
+    "address": "Dirección {crypto}",
+    "amount": "Monto ({symbol})",
+    "amountPlaceholder": "Ingresa el monto en {symbol}",
+    "quickAmounts": "Montos rápidos",
+    "qr": {
+      "title": "Escanea para donate"
+    },
+    "howTo": {
+      "title": "¿Cómo donate?",
+      "step1": "Elige la criptomoneda",
+      "step2": "Copia la dirección o escanea el QR",
+      "step3": "Envía desde tu monedero",
+      "step4": "¡Listo! Gracias 🙌"
+    },
+    "supported": {
+      "title": "Criptomonedas aceptadas"
+    },
+    "tips": {
+      "title": "Consejos",
+      "tip1": "Siempre verifica la dirección antes de enviar",
+      "tip2": "¡Cada satoshi cuenta!",
+      "tip3": "Mantente anónimo si lo deseas",
+      "tip4": "Las donaciones son irreversibles"
+    },
+    "thankYou": {
+      "title": "¡Gracias por tu apoyo!",
+      "desc": "Cada donación nos acerca a la libertad."
+    }
+  },
+  "transparency": {
+    "title": "Transparencia Total",
+    "subtitle": "Cada euro cuenta. Aquí está el estado de tus donaciones.",
+    "currentGoal": {
+      "label": "Destino actual",
+      "raised": "{amount} ETH",
+      "goal": "/ {amount} ETH",
+      "percent": "{percent}%",
+      "cta": "Contribuir a este viaje"
+    },
+    "upcoming": {
+      "title": "Próximos destinos"
+    },
+    "history": {
+      "title": "Historial de viajes"
+    },
+    "status": {
+      "completed": "Completado",
+      "active": "En curso",
+      "pending": "Pendiente"
+    },
+    "note": {
+      "title": "100% transparente.",
+      "desc": "Las direcciones de monedero son públicas. Cada transacción puede verificarse en la blockchain. No se usa fondos para nada más que financiar viajes."
+    }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre OpenExistence",
+    "categories": {
+      "all": "Todo",
+      "general": "General",
+      "crypto": "Cripto",
+      "don": "Donaciones",
+      "trips": "Viajes"
+    },
+    "cta": {
+      "title": "¿Tienes una pregunta?",
+      "desc": "Consulta las categorías arriba o explora otras páginas.",
+      "cta": "Ver transparencia"
+    }
+  },
+  "legal": {
+    "title": "Aviso Legal",
+    "lastUpdate": "Última actualización: Marzo 2026",
+    "sections": {
+      "editor": {
+        "title": "1. Editor del sitio",
+        "content": "El sitio OpenExistence es editado por: OpenExistence - Proyecto anónimo"
+      },
+      "hosting": {
+        "title": "2. Alojamiento",
+        "content": "El sitio está alojado por un proveedor externo."
+      },
+      "intellectual": {
+        "title": "3. Propiedad intelectual",
+        "content": "Todo el contenido de este sitio (textos, imágenes, videos, logotipos, iconos, sonidos, software, etc.) está protegido por derechos de autor. La reproducción sin autorización previa está prohibida."
+      },
+      "data": {
+        "title": "4. Recolección de datos",
+        "content": "Este sitio no recolecta datos personales. No se usan cookies de seguimiento. No se recolectan direcciones de email."
+      },
+      "responsibility": {
+        "title": "5. Responsabilidad",
+        "content": "La información proporcionada es solo informativa. Las donaciones en criptomonedas son irreversibles."
+      },
+      "links": {
+        "title": "6. Enlaces externos",
+        "content": "El sitio puede contener enlaces a otros sitios. OpenExistence no es responsable de su contenido."
+      },
+      "acceptance": {
+        "title": "7. Aceptación",
+        "content": "El uso de este sitio implica la aceptación completa de estos avisos legales."
+      }
+    },
+    "back": "← Volver al inicio"
+  },
+  "footer": {
+    "tagline": "La libertad financiada por la comunidad",
+    "navigation": "Navegación",
+    "legal": "Legal",
+    "community": "Comunidad",
+    "copyright": "© 2026 OpenExistence. Todos los derechos reservados.",
+    "disclaimer": "Las donaciones en criptomonedas son irreversibles. Por favor verifica la dirección antes de enviar."
+  }
+}
