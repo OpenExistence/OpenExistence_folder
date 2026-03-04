@@ -5,7 +5,6 @@ import Donate from '../views/Donate.vue'
 import Legal from '../views/Legal.vue'
 import Transparency from '../views/Transparency.vue'
 import FAQ from '../views/FAQ.vue'
-import FAQ from '../views/FAQ.vue'
 import Contact from '../views/Contact.vue'
 import NotFound from '../views/NotFound.vue'
 

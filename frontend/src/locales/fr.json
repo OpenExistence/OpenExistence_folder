@@ -177,33 +177,33 @@
     "community": "Communauté",
     "copyright": "© 2026 OpenExistence. Tous droits réservés.",
     "disclaimer": "Les dons en cryptomonnaie sont irréversibles. Veuillez vérifier l'adresse avant toute transaction."
-  }
-},
-"error": {
-  "title": "Page introuvable",
-  "message": "Oups ! Cette page n'existe pas. Peut-être que le voyage a pris une mauvaise direction ?",
-  "cta": "Retour à l'accueil"
-},
-"contact": {
-  "title": "Me contacter",
-  "subtitle": "Une question ? Une suggestion ? N'hésitez pas.",
-  "form": {
-    "name": "Nom",
-    "namePlaceholder": "Votre nom",
-    "email": "Email",
-    "emailPlaceholder": "votre@email.com",
-    "message": "Message",
-    "messagePlaceholder": "Votre message...",
-    "submit": "Envoyer",
-    "sending": "Envoi en cours...",
-    "success": "Message envoyé ! On vous répondra peut-être 😉"
   },
-  "info": {
-    "title": "Email",
-    "desc": "contact@openexistence.org"
+  "error": {
+    "title": "Page introuvable",
+    "message": "Oups ! Cette page n'existe pas. Peut-être que le voyage a pris une mauvaise direction ?",
+    "cta": "Retour à l'accueil"
   },
-  "response": {
-    "title": "Réponse",
-    "desc": "On vous répondra peut-être... ou peut-être pas. On est occupés à voyager ! ✈️"
+  "contact": {
+    "title": "Me contacter",
+    "subtitle": "Une question ? Une suggestion ? N'hésitez pas.",
+    "form": {
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "votre@email.com",
+      "message": "Message",
+      "messagePlaceholder": "Votre message...",
+      "submit": "Envoyer",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé ! On vous répondra peut-être 😉"
+    },
+    "info": {
+      "title": "Email",
+      "desc": "contact@openexistence.org"
+    },
+    "response": {
+      "title": "Réponse",
+      "desc": "On vous répondra peut-être... ou peut-être pas. On est occupés à voyager ! ✈️"
+    }
   }
 }

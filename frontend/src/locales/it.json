@@ -180,29 +180,22 @@
   },
   "error": {
     "title": "Pagina non trovata",
-    "message": "Ops! Questa pagina non esiste. Forse il viaggio ha preso una cattiva direzione?",
+    "message": "Ops! Questa pagina non esiste. Forse il viaggio ha preso una brutta direzione?",
     "cta": "Torna alla home"
   },
   "contact": {
     "title": "Contattami",
-    "subtitle": "Una domanda? Un suggerimento? Non esitare a scrivere.",
-    "form": {
-      "name": "Nome",
-      "namePlaceholder": "Il tuo nome",
-  },
-  "contact": {
-    "title": "Contattami",
-    "subtitle": "Una domanda? Un suggerimento? Non esitare a scrivere.",
+    "subtitle": "Una domanda? Un suggerimento? Non esitare.",
     "form": {
       "name": "Nome",
       "namePlaceholder": "Il tuo nome",
       "email": "Email",
-      "emailPlaceholder": "la@tuaemail.com",
+      "emailPlaceholder": "la-tua@email.com",
       "message": "Messaggio",
       "messagePlaceholder": "Il tuo messaggio...",
       "submit": "Invia",
-      "sending": "Invio...",
-      "success": "Messaggio inviato! Forse rispondiamo 😉"
+      "sending": "Invio in corso...",
+      "success": "Messaggio inviato! Ti risponderemo forse 😉"
     },
     "info": {
       "title": "Email",
@@ -210,7 +203,7 @@
     },
     "response": {
       "title": "Risposta",
-      "desc": "Forse rispondiamo... o forse no. Siamo occupati a viaggiare! ✈️"
+      "desc": "Ti risponderemo forse... o forse no. Siamo occupati a viaggiare! ✈️"
     }
   }
 }
