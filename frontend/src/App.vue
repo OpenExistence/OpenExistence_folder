@@ -96,6 +96,7 @@
               <router-link to="/transparency">{{ $t('nav.transparency') }}</router-link>
               <router-link to="/faq">{{ $t('nav.faq') }}</router-link>
               <router-link to="/donate">{{ $t('nav.donate') }}</router-link>
+              <router-link to="/contact">{{ $t('contact.title') }}</router-link>
             </div>
             
             <div class="footer-column">

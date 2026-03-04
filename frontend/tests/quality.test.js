@@ -26,10 +26,10 @@ const i18n = createI18n({
   locale: 'fr',
   fallbackLocale: 'fr',
   messages: {
-    fr: { nav: { home: 'Accueil', about: 'À propos', transparency: 'Transparence', faq: 'FAQ', donate: 'Donner' }, footer: { disclaimer: 'irr' }, legal: { title: 'Mentions Légales' } },
-    en: { nav: { home: 'Home', about: 'About', transparency: 'Transparency', faq: 'FAQ', donate: 'Donate' }, footer: { disclaimer: 'irr' }, legal: { title: 'Legal Notice' } },
-    es: { nav: { home: 'Inicio', about: 'Acerca de', transparency: 'Transparencia', faq: 'FAQ', donate: 'Donar' }, footer: { disclaimer: 'irr' }, legal: { title: 'Aviso Legal' } },
-    it: { nav: { home: 'Home', about: 'Chi siamo', transparency: 'Trasparenza', faq: 'FAQ', donate: 'Dona' }, footer: { disclaimer: 'irr' }, legal: { title: 'Note Legali' } }
+    fr: { nav: { home: 'Accueil', about: 'À propos', transparency: 'Transparence', faq: 'FAQ', donate: 'Donner' }, footer: { disclaimer: 'irr' }, legal: { title: 'Mentions Légales' }, contact: { title: 'Contact' } },
+    en: { nav: { home: 'Home', about: 'About', transparency: 'Transparency', faq: 'FAQ', donate: 'Donate' }, footer: { disclaimer: 'irr' }, legal: { title: 'Legal Notice' }, contact: { title: 'Contact' } },
+    es: { nav: { home: 'Inicio', about: 'Acerca de', transparency: 'Transparencia', faq: 'FAQ', donate: 'Donar' }, footer: { disclaimer: 'irr' }, legal: { title: 'Aviso Legal' }, contact: { title: 'Contactar' } },
+    it: { nav: { home: 'Home', about: 'Chi siamo', transparency: 'Trasparenza', faq: 'FAQ', donate: 'Dona' }, footer: { disclaimer: 'irr' }, legal: { title: 'Note Legali' }, contact: { title: 'Contattami' } }
   }
 })
 

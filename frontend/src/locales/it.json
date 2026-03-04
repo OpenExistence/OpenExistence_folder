@@ -182,5 +182,35 @@
     "title": "Pagina non trovata",
     "message": "Ops! Questa pagina non esiste. Forse il viaggio ha preso una cattiva direzione?",
     "cta": "Torna alla home"
+  },
+  "contact": {
+    "title": "Contattami",
+    "subtitle": "Una domanda? Un suggerimento? Non esitare a scrivere.",
+    "form": {
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+  },
+  "contact": {
+    "title": "Contattami",
+    "subtitle": "Una domanda? Un suggerimento? Non esitare a scrivere.",
+    "form": {
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "email": "Email",
+      "emailPlaceholder": "la@tuaemail.com",
+      "message": "Messaggio",
+      "messagePlaceholder": "Il tuo messaggio...",
+      "submit": "Invia",
+      "sending": "Invio...",
+      "success": "Messaggio inviato! Forse rispondiamo 😉"
+    },
+    "info": {
+      "title": "Email",
+      "desc": "contact@openexistence.org"
+    },
+    "response": {
+      "title": "Risposta",
+      "desc": "Forse rispondiamo... o forse no. Siamo occupati a viaggiare! ✈️"
+    }
   }
 }
