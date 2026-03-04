@@ -9,7 +9,7 @@
     <!-- Current Goal -->
     <div class="current-goal">
       <div class="goal-badge">Destination actuelle</div>
-      <h2>{{ currentTrip.emoji }} {{ currentTrip.name }}</h2>
+      <h2>{{ currentTrip.name }}</h2>
       <p class="goal-description">{{ currentTrip.description }}</p>
       
       <div class="progress-container">
@@ -51,7 +51,7 @@
           <div class="trip-rank">{{ index + 1 }}</div>
           <div class="trip-content">
             <div class="trip-header">
-              <span class="trip-emoji">{{ trip.emoji }}</span>
+              <span class="trip-name">{{ trip.name }}</span>
               <h4>{{ trip.name }}</h4>
             </div>
             <p class="trip-description">{{ trip.description }}</p>
@@ -81,7 +81,7 @@
       <h3>Historique des voyages</h3>
       <div class="history-list">
         <div v-for="trip in completedTrips" :key="trip.name" class="history-item">
-          <span class="history-emoji">{{ trip.emoji }}</span>
+          <span class="history-name">{{ trip.name }}</span>
           <span class="history-name">{{ trip.name }}</span>
           <span class="history-amount">{{ formatAmount(trip.raised) }} ETH</span>
         </div>
@@ -106,11 +106,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-// Données des voyages (à remplacer par des données réelles)
+// Données des voyages
 const trips = ref([
   {
     name: 'New York',
-    emoji: '🗽',
     description: 'La ville qui ne dort jamais - Times Square, Central Park, Brooklyn Bridge',
     image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800',
     goal: 5,
@@ -119,27 +118,24 @@ const trips = ref([
   },
   {
     name: 'Polynésie',
-    emoji: '🏝️',
     description: 'Bora Bora, Papeete, îles Maldives françaises',
-    image: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800',
+    image: 'https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=800',
     goal: 10,
     raised: 0,
     completed: false
   },
   {
     name: 'Chili',
-    emoji: '🇨🇱',
     description: 'Santiago, désert d\'Atacama, Patagonie',
-    image: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=800',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
     goal: 8,
     raised: 0,
     completed: false
   },
   {
     name: 'Mongolie',
-    emoji: '🇲🇳',
     description: 'Oulan-Bator, steppes, yourtes traditionnelles',
-    image: 'https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=800',
+    image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800',
     goal: 6,
     raised: 0,
     completed: false
@@ -315,20 +311,20 @@ const formatAmount = (amount) => {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 200px;
+  width: 280px;
   background-size: cover;
   background-position: center;
   border-radius: 0 16px 16px 0;
-  opacity: 0.3;
+  opacity: 0.4;
   transition: opacity 0.3s ease;
 }
 
 .trip-card:hover .trip-image {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .trip-card.active .trip-image {
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .trip-card:hover {
@@ -373,7 +369,7 @@ const formatAmount = (amount) => {
   margin-bottom: 0.25rem;
 }
 
-.trip-emoji {
+.trip-name {
   font-size: 1.25rem;
 }
 
@@ -453,10 +449,6 @@ const formatAmount = (amount) => {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-}
-
-.history-emoji {
-  font-size: 1.25rem;
 }
 
 .history-name {

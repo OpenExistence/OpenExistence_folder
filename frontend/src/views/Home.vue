@@ -181,7 +181,7 @@
       <div class="container">
         <div class="trip-preview glass-card">
           <div class="trip-label">Prochaine destination</div>
-          <h2>🗽 New York, USA</h2>
+          <h2>New York, USA</h2>
           <p class="trip-progress-text">
             <span class="highlight">2.30 ETH</span> sur 5 ETH收集
           </p>

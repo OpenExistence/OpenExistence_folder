@@ -39,7 +39,7 @@
               <div class="current-trip-banner">
                 <div class="trip-info">
                   <span class="trip-label">🎯 Destination en cours</span>
-                  <span class="trip-name">{{ currentTrip.emoji }} {{ currentTrip.name }}</span>
+                  <span class="trip-name">{{ currentTrip.name }}</span>
                 </div>
                 <div class="trip-progress-mini">
                   <div class="progress-bar-mini">
@@ -221,12 +221,12 @@ const cryptos = [
     icon: '⟐' 
   },
   { 
-    id: 'btc', 
-    name: 'Bitcoin', 
-    symbol: 'BTC', 
-    network: 'Bitcoin',
-    address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 
-    icon: '₿' 
+    id: 'usdc', 
+    name: 'USD Coin (ERC-20)', 
+    symbol: 'USDC', 
+    network: 'Ethereum',
+    address: '0x742d35Cc6634C0532925a3b844Bc9e7595f4Eb5', 
+    icon: '$' 
   },
   { 
     id: 'usdt', 
