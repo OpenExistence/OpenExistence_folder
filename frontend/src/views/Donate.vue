@@ -3,12 +3,16 @@
     <!-- Header -->
     <section class="page-header">
       <div class="header-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
+        <div class="bg-gradient"></div>
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="grid-pattern"></div>
       </div>
       <div class="container">
-        <h1>Faire un don</h1>
-        <p class="subtitle">Soutenez l'aventure OpenExistence</p>
+        <div class="page-header-content">
+          <h1>Faire un don</h1>
+          <p class="subtitle">Soutenez l'aventure OpenExistence</p>
+        </div>
       </div>
     </section>
 
@@ -18,17 +22,17 @@
         <div class="donate-grid">
           <!-- Wallet Section -->
           <div class="wallet-section">
-            <div class="wallet-card card">
+            <div class="wallet-card glass-card">
               <div class="wallet-header">
                 <h2>Adresse du portefeuille</h2>
                 <div class="network-badge">
                   <span class="network-dot"></span>
-                  Ethereum Mainnet
+                  {{ currentCrypto.network }}
                 </div>
               </div>
               
               <div class="warning-box">
-                ⚠️ Envoyez uniquement les cryptomonnaies ci-dessous. Les autres tokens pourraient être perdus.
+                ⚠️ Envoyez uniquement {{ currentCrypto.name }}. Les autres tokens seront perdus.
               </div>
 
               <!-- Crypto Tabs -->
@@ -40,7 +44,7 @@
                   @click="selectedCrypto = crypto.id"
                 >
                   <span class="crypto-icon">{{ crypto.icon }}</span>
-                  <span class="crypto-name">{{ crypto.name }}</span>
+                  <span class="crypto-name">{{ crypto.symbol }}</span>
                 </button>
               </div>
 
@@ -50,8 +54,13 @@
                 <div class="address-box">
                   <code>{{ currentCrypto.address }}</code>
                   <button class="copy-btn" @click="copyAddress">
-                    <span v-if="copied">✓</span>
-                    <span v-else>📋</span>
+                    <svg v-if="!copied" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <svg v-else width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -59,8 +68,11 @@
               <!-- QR Code -->
               <div class="qr-section">
                 <div class="qr-placeholder">
-                  <div class="qr-icon">⬡</div>
-                  <span>QR Code</span>
+                  <div class="qr-code-display">
+                    <!-- Simple QR pattern -->
+                    <div class="qr-pattern"></div>
+                  </div>
+                  <span>Scannez pour donner</span>
                 </div>
               </div>
 
@@ -72,7 +84,7 @@
                     v-for="amount in amounts" 
                     :key="amount"
                     class="amount-btn"
-                    @click="selectedAmount = amount"
+                    @click="selectedAmount = selectedAmount === amount ? null : amount"
                     :class="{ active: selectedAmount === amount }"
                   >
                     {{ amount }} {{ currentCrypto.symbol }}
@@ -85,12 +97,12 @@
           <!-- Info Section -->
           <div class="info-section">
             <!-- How to Donate -->
-            <div class="info-card card">
+            <div class="info-card glass-card">
               <h3>Comment faire un don ?</h3>
               <ol class="steps-list">
                 <li>
                   <span class="step-num">1</span>
-                  <span>Sélectionnez la cryptomonnaie</span>
+                  <span>Choisissez la cryptomonnaie</span>
                 </li>
                 <li>
                   <span class="step-num">2</span>
@@ -98,43 +110,43 @@
                 </li>
                 <li>
                   <span class="step-num">3</span>
-                  <span>Envoyez le montant depuis votre portefeuille</span>
+                  <span>Envoyez depuis votre portefeuille</span>
                 </li>
                 <li>
                   <span class="step-num">4</span>
-                  <span>C'est fait ! Merci pour votre soutien 🙌</span>
+                  <span>C'est fait ! Merci 🙌</span>
                 </li>
               </ol>
             </div>
 
             <!-- Supported Cryptos -->
-            <div class="info-card card">
+            <div class="info-card glass-card">
               <h3>Cryptomonnaies acceptées</h3>
-              <div class="crypto-grid">
+              <div class="crypto-list">
                 <div v-for="crypto in cryptos" :key="crypto.id" class="crypto-item">
                   <span class="crypto-icon">{{ crypto.icon }}</span>
-                  <span>{{ crypto.name }}</span>
+                  <span class="crypto-name">{{ crypto.name }}</span>
                   <span class="crypto-symbol">{{ crypto.symbol }}</span>
                 </div>
               </div>
             </div>
 
             <!-- Tips -->
-            <div class="info-card card tips-card">
+            <div class="info-card glass-card tips-card">
               <h3>💡 Conseils</h3>
               <ul class="tips-list">
                 <li>Vérifiez toujours l'adresse avant d'envoyer</li>
-                <li>Les petits dons sont les bienvenus !</li>
-                <li>Vous pouvez rester anonyme</li>
-                <li>Les dons ne sont pas remboursables</li>
+                <li>Chaque satoshi compte !</li>
+                <li>Restez anonyme si vous le souhaitez</li>
+                <li>Les dons sont irréversibles</li>
               </ul>
             </div>
 
             <!-- Thank You -->
-            <div class="thank-you-card card">
+            <div class="thank-you-card glass-card">
               <div class="thank-you-icon">✨</div>
               <h3>Merci pour votre soutien !</h3>
-              <p>Chaque don, aussi petit soit-il, nous rapproche de la liberté.</p>
+              <p>Chaque don nous rapproche de la liberté.</p>
             </div>
           </div>
         </div>
@@ -151,10 +163,38 @@ const selectedAmount = ref(null)
 const copied = ref(false)
 
 const cryptos = [
-  { id: 'eth', name: 'Ethereum', symbol: 'ETH', address: '0x742d35Cc6634C0532925a3b844Bc9e7595f4Eb5', icon: '⟐' },
-  { id: 'btc', name: 'Bitcoin', symbol: 'BTC', address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', icon: '₿' },
-  { id: 'usdt', name: 'Tether', symbol: 'USDT', address: '0x742d35Cc6634C0532925a3b844Bc9e7595f4Eb5', icon: '₮' },
-  { id: 'sol', name: 'Solana', symbol: 'SOL', address: '7EcDhSYGxXyscszYEP2CqqHfjrGmPNq9U7Y7x7uJ', icon: '◎' }
+  { 
+    id: 'eth', 
+    name: 'Ethereum', 
+    symbol: 'ETH', 
+    network: 'Ethereum',
+    address: '0x742d35Cc6634C0532925a3b844Bc9e7595f4Eb5', 
+    icon: '⟐' 
+  },
+  { 
+    id: 'btc', 
+    name: 'Bitcoin', 
+    symbol: 'BTC', 
+    network: 'Bitcoin',
+    address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', 
+    icon: '₿' 
+  },
+  { 
+    id: 'usdt', 
+    name: 'Tether (ERC-20)', 
+    symbol: 'USDT', 
+    network: 'Ethereum',
+    address: '0x742d35Cc6634C0532925a3b844Bc9e7595f4Eb5', 
+    icon: '₮' 
+  },
+  { 
+    id: 'sol', 
+    name: 'Solana', 
+    symbol: 'SOL', 
+    network: 'Solana',
+    address: '7EcDhSYGxXyscszYEP2CqqHfjrGmPNq9U7Y7x7uJ', 
+    icon: '◎' 
+  }
 ]
 
 const amounts = [0.01, 0.05, 0.1, 0.5, 1, 5]
@@ -177,8 +217,9 @@ const copyAddress = async () => {
 </script>
 
 <style scoped>
+/* Page Header */
 .page-header {
-  padding: 6rem 0 4rem;
+  padding: 8rem 0 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -190,55 +231,81 @@ const copyAddress = async () => {
   overflow: hidden;
 }
 
-.orb {
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 245, 212, 0.1) 0%, transparent 60%);
+}
+
+.bg-glow {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
 }
 
-.orb-1 {
-  width: 400px;
-  height: 400px;
-  background: var(--primary);
-  top: -150px;
+.glow-1 {
+  width: 500px;
+  height: 500px;
+  background: rgba(0, 245, 212, 0.15);
+  top: -200px;
   right: -100px;
-  opacity: 0.3;
 }
 
-.orb-2 {
-  width: 300px;
-  height: 300px;
-  background: var(--accent);
+.glow-2 {
+  width: 350px;
+  height: 350px;
+  background: rgba(247, 37, 133, 0.15);
   bottom: -100px;
   left: -50px;
-  opacity: 0.3;
+}
+
+.grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%);
+}
+
+.page-header-content {
+  position: relative;
+  z-index: 1;
 }
 
 .page-header h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin-bottom: 1rem;
-  position: relative;
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .subtitle {
   font-size: 1.25rem;
   color: var(--text-gray);
-  position: relative;
 }
 
+/* Section */
 .section {
   padding: 2rem 0 6rem;
 }
 
 .donate-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 2rem;
+  align-items: start;
 }
 
 /* Wallet Card */
 .wallet-card {
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .wallet-header {
@@ -246,6 +313,8 @@ const copyAddress = async () => {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .wallet-header h2 {
@@ -261,6 +330,7 @@ const copyAddress = async () => {
   padding: 0.5rem 1rem;
   border-radius: 50px;
   font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .network-dot {
@@ -274,9 +344,9 @@ const copyAddress = async () => {
 .warning-box {
   background: rgba(247, 37, 133, 0.1);
   border: 1px solid rgba(247, 37, 133, 0.3);
-  color: #f72585;
+  color: #ff5c8d;
   padding: 1rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
 }
@@ -294,16 +364,18 @@ const copyAddress = async () => {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   transition: all 0.3s ease;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .crypto-tab:hover {
   border-color: var(--primary);
+  background: var(--bg-card-hover);
 }
 
 .crypto-tab.active {
@@ -317,6 +389,7 @@ const copyAddress = async () => {
 
 .crypto-tab .crypto-name {
   font-size: 0.85rem;
+  font-weight: 600;
   color: var(--text-gray);
 }
 
@@ -342,25 +415,30 @@ const copyAddress = async () => {
   gap: 0.75rem;
   background: var(--bg-dark);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 1rem;
 }
 
 .address-box code {
   flex: 1;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   word-break: break-all;
   color: var(--primary);
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .copy-btn {
   background: rgba(0, 245, 212, 0.1);
   border: none;
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
+  padding: 0.625rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 1rem;
+  color: var(--primary);
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .copy-btn:hover {
@@ -375,10 +453,10 @@ const copyAddress = async () => {
 }
 
 .qr-placeholder {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   background: white;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -387,13 +465,20 @@ const copyAddress = async () => {
   color: #333;
 }
 
-.qr-icon {
-  font-size: 3rem;
-  color: #000;
+.qr-code-display {
+  width: 120px;
+  height: 120px;
+  background: 
+    linear-gradient(90deg, #000 25%, transparent 25%, transparent 75%, #000 75%),
+    linear-gradient(#000 25%, transparent 25%, transparent 75%, #000 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
+  opacity: 0.8;
 }
 
 .qr-placeholder span {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  color: #666;
 }
 
 /* Amount Section */
@@ -414,11 +499,12 @@ const copyAddress = async () => {
   padding: 0.875rem 1rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   color: var(--text-light);
   font-weight: 600;
   transition: all 0.3s ease;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .amount-btn:hover {
@@ -472,15 +558,15 @@ const copyAddress = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
   flex-shrink: 0;
 }
 
-/* Crypto Grid */
-.crypto-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+/* Crypto List */
+.crypto-list {
+  display: flex;
+  flex-direction: column;
   gap: 0.75rem;
 }
 
@@ -488,20 +574,24 @@ const copyAddress = async () => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem;
+  padding: 0.875rem 1rem;
   background: var(--bg-dark);
-  border-radius: 10px;
-  font-size: 0.9rem;
+  border-radius: var(--radius-md);
 }
 
 .crypto-item .crypto-icon {
   font-size: 1.25rem;
 }
 
-.crypto-symbol {
-  margin-left: auto;
+.crypto-item .crypto-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.crypto-item .crypto-symbol {
   color: var(--text-gray);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 /* Tips */
@@ -531,21 +621,22 @@ const copyAddress = async () => {
   background: var(--gradient-1);
   text-align: center;
   padding: 2rem;
+  border: none;
 }
 
 .thank-you-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .thank-you-card h3 {
   color: var(--bg-dark);
   margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
 .thank-you-card p {
-  color: var(--bg-dark);
-  opacity: 0.8;
+  color: rgba(0, 0, 0, 0.7);
   font-size: 0.95rem;
 }
 
@@ -554,25 +645,39 @@ const copyAddress = async () => {
   .donate-grid {
     grid-template-columns: 1fr;
   }
-  
-  .crypto-tabs {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
-  .page-header h1 {
-    font-size: 2.5rem;
+  .page-header {
+    padding: 7rem 0 3rem;
   }
   
   .wallet-header {
     flex-direction: column;
-    gap: 1rem;
     align-items: flex-start;
   }
   
-  .crypto-grid {
-    grid-template-columns: 1fr;
+  .crypto-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .amount-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .address-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .copy-btn {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .crypto-tabs {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .amount-grid {

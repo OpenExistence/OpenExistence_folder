@@ -9,16 +9,42 @@
           <span class="logo-icon">◈</span>
           <span class="logo-text">Open<span class="text-gradient">Existence</span></span>
         </router-link>
-        <div class="nav-links">
+        
+        <!-- Desktop Menu -->
+        <div class="nav-links desktop-only">
           <router-link to="/">Accueil</router-link>
           <router-link to="/about">À propos</router-link>
           <router-link to="/transparency">Transparence</router-link>
           <router-link to="/faq">FAQ</router-link>
           <router-link to="/donate" class="btn btn-primary">
-            <span>Faire un don</span>
+            <span>Donner</span>
           </router-link>
         </div>
+        
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" @click="mobileMenuOpen = !mobileMenuOpen">
+          <svg v-if="!mobileMenuOpen" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </nav>
+      
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" :class="{ open: mobileMenuOpen }">
+        <router-link to="/" @click="mobileMenuOpen = false">Accueil</router-link>
+        <router-link to="/about" @click="mobileMenuOpen = false">À propos</router-link>
+        <router-link to="/transparency" @click="mobileMenuOpen = false">Transparence</router-link>
+        <router-link to="/faq" @click="mobileMenuOpen = false">FAQ</router-link>
+        <router-link to="/donate" class="btn btn-primary" @click="mobileMenuOpen = false">
+          <span>Donner</span>
+        </router-link>
+      </div>
     </header>
     
     <main>
@@ -78,6 +104,9 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
+const mobileMenuOpen = ref(false)
 </script>
 
 <style scoped>
@@ -170,6 +199,15 @@
 .nav-links .btn {
   padding: 0.75rem 1.5rem;
   font-size: 0.9rem;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
 main {
@@ -287,12 +325,64 @@ main {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+  
   .nav-links {
     gap: 1.25rem;
   }
   
   .nav-links a:not(.btn) {
     display: none;
+  }
+  
+  /* Mobile Menu */
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(3, 3, 7, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .mobile-menu a {
+    padding: 1rem;
+    color: var(--text-gray);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu a:hover {
+    background: var(--bg-card);
+    color: var(--text-light);
+  }
+  
+  .mobile-menu .btn {
+    margin-top: 0.5rem;
+    text-align: center;
+    justify-content: center;
   }
   
   .footer-links-group {
