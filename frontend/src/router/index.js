@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Donate from '../views/Donate.vue'
 import Legal from '../views/Legal.vue'
+import Transparency from '../views/Transparency.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/legal',
     name: 'Legal',
     component: Legal
+  },
+  {
+    path: '/transparency',
+    name: 'Transparency',
+    component: Transparency
   }
 ]
 

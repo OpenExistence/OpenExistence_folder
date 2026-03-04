@@ -11,6 +11,7 @@ import Home from '../src/views/Home.vue'
 import About from '../src/views/About.vue'
 import Donate from '../src/views/Donate.vue'
 import Legal from '../src/views/Legal.vue'
+import Transparency from '../src/views/Transparency.vue'
 
 // Router pour les tests
 const router = createRouter({
@@ -19,7 +20,8 @@ const router = createRouter({
     { path: '/', name: 'Home', component: Home },
     { path: '/about', name: 'About', component: About },
     { path: '/donate', name: 'Donate', component: Donate },
-    { path: '/legal', name: 'Legal', component: Legal }
+    { path: '/legal', name: 'Legal', component: Legal },
+    { path: '/transparency', name: 'Transparency', component: Transparency }
   ]
 })
 
@@ -152,6 +154,27 @@ describe('OpenExistence - Tests de base', () => {
       expect(pathes).toContain('/about')
       expect(pathes).toContain('/donate')
       expect(pathes).toContain('/legal')
+      expect(pathes).toContain('/transparency')
+    })
+  })
+  
+  describe('Page Transparence (Transparency.vue)', () => {
+    it('doit exister et avoir du contenu', () => {
+      const wrapper = mount(Transparency)
+      expect(wrapper.html().length).toBeGreaterThan(500)
+    })
+    
+    it('doit afficher les destinations', () => {
+      const wrapper = mount(Transparency)
+      expect(wrapper.html()).toContain('New York')
+      expect(wrapper.html()).toContain('Polynésie')
+      expect(wrapper.html()).toContain('Chili')
+      expect(wrapper.html()).toContain('Mongolie')
+    })
+    
+    it('doit avoir une barre de progression', () => {
+      const wrapper = mount(Transparency)
+      expect(wrapper.html()).toContain('progress')
     })
   })
   

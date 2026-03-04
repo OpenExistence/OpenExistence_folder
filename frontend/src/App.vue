@@ -9,6 +9,7 @@
         <div class="nav-links">
           <router-link to="/">Accueil</router-link>
           <router-link to="/about">À propos</router-link>
+          <router-link to="/transparency">Transparence</router-link>
           <router-link to="/donate" class="btn btn-primary">
             <span>Faire un don</span>
           </router-link>
