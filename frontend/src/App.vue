@@ -128,9 +128,10 @@ const mobileMenuOpen = ref(false)
 .header-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(3, 3, 7, 0.9) 0%, rgba(3, 3, 7, 0) 100%);
+  background: linear-gradient(180deg, rgba(248, 245, 240, 0.95) 0%, rgba(248, 245, 240, 0.8) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav {
@@ -217,7 +218,7 @@ main {
 
 /* Footer moderne */
 .footer {
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.8) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0.08) 100%);
   border-top: 1px solid var(--border);
   padding: 5rem 0 2rem;
   margin-top: 4rem;

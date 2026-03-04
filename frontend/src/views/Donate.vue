@@ -35,6 +35,20 @@
                 ⚠️ Envoyez uniquement {{ currentCrypto.name }}. Les autres tokens seront perdus.
               </div>
 
+              <!-- Current Trip Banner -->
+              <div class="current-trip-banner">
+                <div class="trip-info">
+                  <span class="trip-label">🎯 Destination en cours</span>
+                  <span class="trip-name">{{ currentTrip.emoji }} {{ currentTrip.name }}</span>
+                </div>
+                <div class="trip-progress-mini">
+                  <div class="progress-bar-mini">
+                    <div class="progress-fill-mini" :style="{ width: currentTrip.progress + '%' }"></div>
+                  </div>
+                  <span class="progress-text">{{ currentTrip.raised }} / {{ currentTrip.goal }} ETH</span>
+                </div>
+              </div>
+
               <!-- Crypto Dropdown -->
               <div class="crypto-dropdown">
                 <label>Cryptomonnaie</label>
@@ -188,6 +202,14 @@ const selectedCrypto = ref('eth')
 const customAmount = ref(null)
 const copied = ref(false)
 const dropdownOpen = ref(false)
+
+const currentTrip = {
+  name: 'New York',
+  emoji: '🗽',
+  goal: 5,
+  raised: 2.3,
+  progress: 46
+}
 
 const cryptos = [
   { 
@@ -381,6 +403,66 @@ const copyAddress = async () => {
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
+}
+
+/* Current Trip Banner */
+.current-trip-banner {
+  background: linear-gradient(135deg, rgba(0, 245, 212, 0.15) 0%, rgba(123, 44, 191, 0.15) 100%);
+  border: 1px solid rgba(0, 245, 212, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.trip-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.trip-label {
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.trip-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.trip-progress-mini {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-bar-mini {
+  width: 120px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill-mini {
+  height: 100%;
+  background: var(--gradient-1);
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  font-weight: 500;
 }
 
 /* Crypto Dropdown */
