@@ -1,11 +1,14 @@
 <template>
   <div class="app">
-    <header class="header glass">
+    <div class="noise-overlay"></div>
+    
+    <header class="header">
+      <div class="header-bg"></div>
       <nav class="nav container">
-        <div class="logo">
+        <router-link to="/" class="logo">
           <span class="logo-icon">◈</span>
           <span class="logo-text">Open<span class="text-gradient">Existence</span></span>
-        </div>
+        </router-link>
         <div class="nav-links">
           <router-link to="/">Accueil</router-link>
           <router-link to="/about">À propos</router-link>
@@ -41,6 +44,7 @@
               <h4>Navigation</h4>
               <router-link to="/">Accueil</router-link>
               <router-link to="/about">À propos</router-link>
+              <router-link to="/transparency">Transparence</router-link>
               <router-link to="/donate">Faire un don</router-link>
             </div>
             
@@ -90,10 +94,20 @@
   padding: 1rem 0;
 }
 
+.header-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 3, 7, 0.9) 0%, rgba(3, 3, 7, 0) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .logo {
@@ -102,6 +116,7 @@
   gap: 0.75rem;
   font-size: 1.5rem;
   font-weight: 700;
+  text-decoration: none;
 }
 
 .logo-icon {
@@ -120,10 +135,10 @@
   gap: 2.5rem;
 }
 
-.nav-links a {
+.nav-links a:not(.btn) {
   color: var(--text-gray);
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
 }
 
@@ -146,6 +161,10 @@
   width: 100%;
 }
 
+.nav-links .router-link-active:not(.btn)::after {
+  width: 100%;
+}
+
 .nav-links .btn {
   padding: 0.75rem 1.5rem;
   font-size: 0.9rem;
@@ -156,11 +175,24 @@ main {
   padding-top: 80px;
 }
 
+/* Footer moderne */
 .footer {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.8) 100%);
   border-top: 1px solid var(--border);
-  padding: 4rem 0 2rem;
+  padding: 5rem 0 2rem;
   margin-top: 4rem;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
 
 .footer-content {
@@ -191,10 +223,8 @@ main {
 .footer-links-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  gap: 3rem;
+  padding: 2.5rem 0;
 }
 
 .footer-column {
@@ -204,40 +234,42 @@ main {
 }
 
 .footer-column h4 {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: var(--primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
 }
 
 .footer-column a {
   color: var(--text-gray);
   font-size: 0.9rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .footer-column a:hover {
-  color: var(--text-light);
+  color: var(--primary);
+  transform: translateX(4px);
 }
 
 .footer-bottom {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
 }
 
 .footer-copyright {
-  color: var(--text-gray);
+  color: var(--text-gray-dark);
   font-size: 0.85rem;
 }
 
 .footer-disclaimer {
-  color: var(--text-gray);
-  font-size: 0.8rem;
+  color: var(--text-gray-dark);
+  font-size: 0.75rem;
   opacity: 0.7;
   font-style: italic;
+  margin-top: 0.5rem;
 }
 
 /* Page transitions */
@@ -251,9 +283,10 @@ main {
   opacity: 0;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .nav-links {
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   
   .nav-links a:not(.btn) {
@@ -263,10 +296,15 @@ main {
   .footer-links-group {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 2rem;
   }
   
   .footer-column {
     align-items: center;
+  }
+  
+  .footer-column a:hover {
+    transform: none;
   }
 }
 </style>
