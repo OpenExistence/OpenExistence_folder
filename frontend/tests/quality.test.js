@@ -15,7 +15,9 @@ const router = createRouter({
     { path: '/', name: 'Home', component: Home },
     { path: '/about', name: 'About', component: { template: '<div>About</div>' } },
     { path: '/donate', name: 'Donate', component: { template: '<div>Donate</div>' } },
-    { path: '/legal', name: 'Legal', component: { template: '<div>Legal</div>' } }
+    { path: '/legal', name: 'Legal', component: { template: '<div>Legal</div>' } },
+    { path: '/transparency', name: 'Transparency', component: { template: '<div>Transparency</div>' } },
+    { path: '/faq', name: 'FAQ', component: { template: '<div>FAQ</div>' } }
   ]
 })
 
@@ -24,18 +26,31 @@ const i18n = createI18n({
   locale: 'fr',
   fallbackLocale: 'fr',
   messages: {
-    fr: { nav: { home: 'Accueil' }, footer: { disclaimer: 'irr' } },
-    en: { nav: { home: 'Home' }, footer: { disclaimer: 'irr' } },
-    es: { nav: { home: 'Inicio' }, footer: { disclaimer: 'irr' } },
-    it: { nav: { home: 'Home' }, footer: { disclaimer: 'irr' } }
+    fr: { nav: { home: 'Accueil', about: 'À propos', transparency: 'Transparence', faq: 'FAQ', donate: 'Donner' }, footer: { disclaimer: 'irr' }, legal: { title: 'Mentions Légales' } },
+    en: { nav: { home: 'Home', about: 'About', transparency: 'Transparency', faq: 'FAQ', donate: 'Donate' }, footer: { disclaimer: 'irr' }, legal: { title: 'Legal Notice' } },
+    es: { nav: { home: 'Inicio', about: 'Acerca de', transparency: 'Transparencia', faq: 'FAQ', donate: 'Donar' }, footer: { disclaimer: 'irr' }, legal: { title: 'Aviso Legal' } },
+    it: { nav: { home: 'Home', about: 'Chi siamo', transparency: 'Trasparenza', faq: 'FAQ', donate: 'Dona' }, footer: { disclaimer: 'irr' }, legal: { title: 'Note Legali' } }
   }
 })
 
 describe('OpenExistence - Tests de qualité', () => {
+  const shallowMount = (component, options = {}) => {
+    return mount(component, { 
+      ...options, 
+      global: {
+        ...options.global,
+        stubs: {
+          RouterLink: true,
+          RouterView: { template: '<div><slot /></div>' },
+          ...options.global?.stubs
+        }
+      }
+    })
+  }
   
   describe('Accessibilité', () => {
     it('doit avoir des balises title dans les pages', () => {
-      const wrapper = mount(Home)
+      const wrapper = shallowMount(Home)
       const links = wrapper.findAll('a')
       links.forEach(link => {
         expect(link.text().trim().length).toBeGreaterThan(0)
@@ -43,7 +58,7 @@ describe('OpenExistence - Tests de qualité', () => {
     })
     
     it('doit avoir des boutons avec du texte', () => {
-      const wrapper = mount(Home)
+      const wrapper = shallowMount(Home)
       const buttons = wrapper.findAll('button')
       const routerLinks = wrapper.findAll('router-link')
       const allButtons = [...buttons, ...routerLinks]
@@ -53,7 +68,7 @@ describe('OpenExistence - Tests de qualité', () => {
     })
     
     it('ne doit pas avoir de liens avec # comme href', () => {
-      const wrapper = mount(App, {
+      const wrapper = shallowMount(App, {
         global: { plugins: [router, i18n] }
       })
       const html = wrapper.html()
@@ -63,7 +78,7 @@ describe('OpenExistence - Tests de qualité', () => {
   
   describe('SEO et Meta', () => {
     it('doit avoir des headings (h1, h2, h3) sur la page home', () => {
-      const wrapper = mount(Home)
+      const wrapper = shallowMount(Home)
       const h1 = wrapper.find('h1')
       const h2 = wrapper.findAll('h2')
       expect(h1.exists()).toBe(true)
@@ -71,7 +86,7 @@ describe('OpenExistence - Tests de qualité', () => {
     })
     
     it('le h1 doit avoir du contenu', () => {
-      const wrapper = mount(Home)
+      const wrapper = shallowMount(Home)
       const h1 = wrapper.find('h1')
       expect(h1.text().trim().length).toBeGreaterThan(0)
     })
@@ -79,18 +94,18 @@ describe('OpenExistence - Tests de qualité', () => {
   
   describe('Bonnes pratiques UX', () => {
     it('doit avoir un bouton CTA visible sur la page d\'accueil', () => {
-      const wrapper = mount(Home)
+      const wrapper = shallowMount(Home)
       const html = wrapper.html().toLowerCase()
       expect(html.includes('don') || html.includes('soutenir')).toBe(true)
     })
     
     it('doit avoir une section comment ça marche', () => {
-      const wrapper = mount(Home)
+      const wrapper = shallowMount(Home)
       expect(wrapper.html()).toContain('Comment ça marche')
     })
     
     it('doit avoir des stats ou indicateurs de progression', () => {
-      const wrapper = mount(Home)
+      const wrapper = shallowMount(Home)
       expect(wrapper.html()).toContain('ETH')
       expect(wrapper.html()).toContain('Total')
     })
@@ -98,7 +113,7 @@ describe('OpenExistence - Tests de qualité', () => {
   
   describe('Links et Navigation', () => {
     it('tous les liens router-link doivent avoir une destination', () => {
-      const wrapper = mount(App, {
+      const wrapper = shallowMount(App, {
         global: { plugins: [router, i18n] }
       })
       const routerLinks = wrapper.findAll('router-link')
@@ -128,7 +143,7 @@ describe('OpenExistence - Tests de qualité', () => {
   
   describe('Sécurité des liens externes', () => {
     it('les liens externes doivent avoir rel="noopener"', () => {
-      const wrapper = mount(App, {
+      const wrapper = shallowMount(App, {
         global: { plugins: [router, i18n] }
       })
       const html = wrapper.html()
@@ -143,7 +158,7 @@ describe('OpenExistence - Tests de qualité', () => {
   
   describe('Contenu légal', () => {
     it('doit avoir une page mentions légales', () => {
-      const wrapper = mount(App, {
+      const wrapper = shallowMount(App, {
         global: { plugins: [router, i18n] }
       })
       const html = wrapper.html()
@@ -151,7 +166,7 @@ describe('OpenExistence - Tests de qualité', () => {
     })
     
     it('doit avoir un disclaimer sur les dons', () => {
-      const wrapper = mount(App, {
+      const wrapper = shallowMount(App, {
         global: { plugins: [router, i18n] }
       })
       const html = wrapper.html().toLowerCase()
