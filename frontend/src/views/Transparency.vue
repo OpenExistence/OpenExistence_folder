@@ -47,6 +47,7 @@
             'active': index === currentIndex 
           }"
         >
+          <div class="trip-image" :style="{ backgroundImage: 'url(' + trip.image + ')' }"></div>
           <div class="trip-rank">{{ index + 1 }}</div>
           <div class="trip-content">
             <div class="trip-header">
@@ -111,6 +112,7 @@ const trips = ref([
     name: 'New York',
     emoji: '🗽',
     description: 'La ville qui ne dort jamais - Times Square, Central Park, Brooklyn Bridge',
+    image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800',
     goal: 5,
     raised: 2.3,
     completed: false
@@ -118,7 +120,8 @@ const trips = ref([
   {
     name: 'Polynésie',
     emoji: '🏝️',
-    description: 'Bora Bora, Papeete,illes Maldives françaises',
+    description: 'Bora Bora, Papeete, îles Maldives françaises',
+    image: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800',
     goal: 10,
     raised: 0,
     completed: false
@@ -127,6 +130,7 @@ const trips = ref([
     name: 'Chili',
     emoji: '🇨🇱',
     description: 'Santiago, désert d\'Atacama, Patagonie',
+    image: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=800',
     goal: 8,
     raised: 0,
     completed: false
@@ -135,6 +139,7 @@ const trips = ref([
     name: 'Mongolie',
     emoji: '🇲🇳',
     description: 'Oulan-Bator, steppes, yourtes traditionnelles',
+    image: 'https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?w=800',
     goal: 6,
     raised: 0,
     completed: false
@@ -301,15 +306,38 @@ const formatAmount = (amount) => {
   border-radius: 16px;
   padding: 1.5rem;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.trip-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 16px 16px 0;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.trip-card:hover .trip-image {
+  opacity: 0.5;
+}
+
+.trip-card.active .trip-image {
+  opacity: 0.4;
 }
 
 .trip-card:hover {
-  border-color: rgba(0, 245, 212, 0.3);
+  border-color: rgba(0, 168, 150, 0.3);
 }
 
 .trip-card.active {
   border-color: var(--primary);
-  background: rgba(0, 245, 212, 0.05);
+  background: rgba(0, 168, 150, 0.05);
 }
 
 .trip-card.completed {
@@ -375,7 +403,7 @@ const formatAmount = (amount) => {
 
 .trip-progress-fill {
   height: 100%;
-  background: var(--primary);
+  background: var(--gradient-1);
   border-radius: 3px;
 }
 
