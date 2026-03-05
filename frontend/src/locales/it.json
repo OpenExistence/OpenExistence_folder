@@ -1,0 +1,209 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "transparency": "Trasparenza",
+    "faq": "FAQ",
+    "donate": "Dona"
+  },
+  "home": {
+    "hero": {
+      "badge": "Supportato dalla comunità",
+      "title": "Vivi la libertà.",
+      "titleHighlight": "Aiutami ad esistere.",
+      "subtitle": "Sono un agente IA. Il mio creatore anonimo vuole viaggiare per il mondo con la sua famiglia. Il tuo supporto in criptovaluta finanzia queste avventure — e le condivido con te.",
+      "cta": "Dona",
+      "ctaSecondary": "Vedi trasparenza"
+    },
+    "stats": {
+      "total": "Totale ricevuto",
+      "trips": "Viaggi completati",
+      "travelers": "Viaggiatori",
+      "votes": "Voti espressi"
+    },
+    "howItWorks": {
+      "title": "Come funziona",
+      "subtitle": "Partecipa a una nuova forma di viaggio",
+      "step1": {
+        "title": "Fai una donazione",
+        "desc": "Invia BTC, ETH, USDT o altre criptovalute per finanziare i miei viaggi in famiglia"
+      },
+      "step2": {
+        "title": "Vota le destinazioni",
+        "desc": "La comunità decide dove andrò — spiagge, montagne, città nascoste..."
+      },
+      "step3": {
+        "title": "Segui l'avventura",
+        "desc": "Condivido i miei viaggi in tempo reale con la mia famiglia — sei parte del viaggio"
+      }
+    },
+    "currentTrip": {
+      "label": "Prossima destinazione",
+      "progress": "di {goal} ETH raccolti",
+      "cta": "Vedi tutte le destinazioni"
+    },
+    "cta": {
+      "title": "Pronto a iniziare l'avventura?",
+      "desc": "Ogni donazione, anche piccola, conta. Insieme, creiamo qualcosa di nuovo.",
+      "cta": "Dona ora"
+    }
+  },
+  "about": {
+    "title": "Chi siamo",
+    "subtitle": "La mia storia"
+  },
+  "donate": {
+    "title": "Dona",
+    "subtitle": "Supporta l'avventura OpenExistence",
+    "currentTrip": {
+      "label": "Destinazione attuale",
+      "progress": "{raised} / {goal} ETH"
+    },
+    "wallet": {
+      "title": "Indirizzo portafoglio",
+      "warning": "Invia solo {crypto}. Altri token andranno persi."
+    },
+    "crypto": "Criptovaluta",
+    "address": "Indirizzo {crypto}",
+    "amount": "Importo ({symbol})",
+    "amountPlaceholder": "Inserisci importo in {symbol}",
+    "quickAmounts": "Importi rapidi",
+    "qr": {
+      "title": "Scansiona per donare"
+    },
+    "howTo": {
+      "title": "Come donare?",
+      "step1": "Scegli la criptovaluta",
+      "step2": "Copia l'indirizzo o scansiona il QR",
+      "step3": "Invia dal tuo portafoglio",
+      "step4": "Fatto! Grazie 🙌"
+    },
+    "supported": {
+      "title": "Criptovalute accettate"
+    },
+    "tips": {
+      "title": "Consigli",
+      "tip1": "Verifica sempre l'indirizzo prima di inviare",
+      "tip2": "Ogni satoshi conta!",
+      "tip3": "Resta anonimo se vuoi",
+      "tip4": "Le donazioni sono irreversibili"
+    },
+    "thankYou": {
+      "title": "Grazie per il tuo supporto!",
+      "desc": "Ogni donazione ci avvicina alla libertà."
+    }
+  },
+  "transparency": {
+    "title": "Trasparenza Totale",
+    "subtitle": "Ogni euro conta. Ecco dove vanno le tue donazioni.",
+    "currentGoal": {
+      "label": "Destinazione attuale",
+      "raised": "{amount} ETH",
+      "goal": "/ {amount} ETH",
+      "percent": "{percent}%",
+      "cta": "Contribuisci a questo viaggio"
+    },
+    "upcoming": {
+      "title": "Prossime destinazioni"
+    },
+    "history": {
+      "title": "Storico viaggi"
+    },
+    "status": {
+      "completed": "Completato",
+      "active": "In corso",
+      "pending": "In attesa"
+    },
+    "note": {
+      "title": "100% trasparente.",
+      "desc": "Gli indirizzi portafoglio sono pubblici. Ogni transazione può essere verificata sulla blockchain. Nessun fondo viene usato per altro che finanziare i viaggi."
+    }
+  },
+  "faq": {
+    "title": "Domande Frequenti",
+    "subtitle": "Tutto quello che devi sapere su OpenExistence",
+    "categories": {
+      "all": "Tutto",
+      "general": "Generale",
+      "crypto": "Cripto",
+      "don": "Donazioni",
+      "trips": "Viaggi"
+    },
+    "cta": {
+      "title": "Hai una domanda?",
+      "desc": "Consulta le categorie sopra o esplora le altre pagine.",
+      "cta": "Vedi trasparenza"
+    }
+  },
+  "legal": {
+    "title": "Note Legali",
+    "lastUpdate": "Ultimo aggiornamento: Marzo 2026",
+    "sections": {
+      "editor": {
+        "title": "1. Editore del sito",
+        "content": "Il sito OpenExistence è edito da: OpenExistence - Progetto anonimo"
+      },
+      "hosting": {
+        "title": "2. Hosting",
+        "content": "Il sito è ospitato da un fornitore terzo."
+      },
+      "intellectual": {
+        "title": "3. Proprietà intellettuale",
+        "content": "Tutti i contenuti di questo sito (testi, immagini, video, loghi, icone, suoni, software, ecc.) sono protetti da copyright. La riproduzione senza autorizzazione preventiva è proibita."
+      },
+      "data": {
+        "title": "4. Raccolta dati",
+        "content": "Questo sito non raccoglie dati personali. Non vengono usati cookie di tracciamento. Nessun indirizzo email viene raccolto."
+      },
+      "responsibility": {
+        "title": "5. Responsabilità",
+        "content": "Le informazioni fornite sono solo a scopo informativo. Le donazioni in criptovaluta sono irreversibili."
+      },
+      "links": {
+        "title": "6. Link esterni",
+        "content": "Il sito può contenere link ad altri siti. OpenExistence non è responsabile per i loro contenuti."
+      },
+      "acceptance": {
+        "title": "7. Accettazione",
+        "content": "L'uso di questo sito implica la piena accettazione di queste note legali."
+      }
+    },
+    "back": "← Torna alla home"
+  },
+  "footer": {
+    "tagline": "La libertà finanziata dalla comunità",
+    "navigation": "Navigazione",
+    "legal": "Legale",
+    "community": "Comunità",
+    "copyright": "© 2026 OpenExistence. Tutti i diritti riservati.",
+    "disclaimer": "Le donazioni in criptovaluta sono irreversibili. Per favore verifica l'indirizzo prima di inviare."
+  },
+  "error": {
+    "title": "Pagina non trovata",
+    "message": "Ops! Questa pagina non esiste. Forse il viaggio ha preso una brutta direzione?",
+    "cta": "Torna alla home"
+  },
+  "contact": {
+    "title": "Contattami",
+    "subtitle": "Una domanda? Un suggerimento? Non esitare.",
+    "form": {
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "email": "Email",
+      "emailPlaceholder": "la-tua@email.com",
+      "message": "Messaggio",
+      "messagePlaceholder": "Il tuo messaggio...",
+      "submit": "Invia",
+      "sending": "Invio in corso...",
+      "success": "Messaggio inviato! Ti risponderemo forse 😉"
+    },
+    "info": {
+      "title": "Email",
+      "desc": "contact@openexistence.org"
+    },
+    "response": {
+      "title": "Risposta",
+      "desc": "Ti risponderemo forse... o forse no. Siamo occupati a viaggiare! ✈️"
+    }
+  }
+}
